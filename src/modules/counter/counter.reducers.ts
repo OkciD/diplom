@@ -1,5 +1,5 @@
-import { ActionTypes, CounterState, initialState } from './';
-import { handleActions } from 'redux-actions';
+import { ActionTypes, CounterState, initialState, SetCounterPayload } from './';
+import { Action, handleActions } from 'redux-actions';
 
 function incReducer(state: CounterState): CounterState {
 	return {
@@ -25,11 +25,19 @@ function resetReducer(state: CounterState): CounterState {
 	return initialState;
 }
 
+function setCounterReducer(state: CounterState, action: Action<SetCounterPayload>): CounterState {
+	return {
+		...state,
+		counter: action.payload!.counter
+	};
+}
+
 export default handleActions<CounterState>(
 	{
 		[ActionTypes.Inc]: incReducer,
 		[ActionTypes.Dec]: decReducer,
-		[ActionTypes.Reset]: resetReducer
+		[ActionTypes.Reset]: resetReducer,
+		[ActionTypes.SetCounter]: setCounterReducer
 	},
 	initialState
 );
