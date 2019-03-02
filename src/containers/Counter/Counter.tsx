@@ -3,6 +3,8 @@ import { counterDecAction, counterIncAction, CounterState, resetAction } from '.
 import { StoreState } from '../../modules/index/';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { View, Text, Button } from 'react-native';
+import styles from './Counter.styles';
 
 interface OwnProps {
 
@@ -22,7 +24,20 @@ type Props = OwnProps & StoreProps & DispatchProps;
 
 class Counter extends React.Component<Props> {
 	public render(): React.ReactNode {
-		return undefined;
+		const { counter, incCounter, decCounter, resetCounter } = this.props;
+
+		return (
+			<View style={styles.container}>
+				<View style={styles.counterValueContainer}>
+					<Text style={styles.counterValue}>{counter}</Text>
+				</View>
+				<View style={styles.buttonsContainer}>
+					<Button title="Inc" onPress={incCounter} />
+					<Button title="Dec" onPress={decCounter} />
+					<Button title="Reset" onPress={resetCounter} />
+				</View>
+			</View>
+		);
 	}
 }
 
