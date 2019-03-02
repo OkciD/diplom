@@ -19,11 +19,19 @@
         "singleline": "never"
       }
     ],
-    "typedef": [true, "call-signature", "parameter", "arrow-parameter"],
+    "typedef": [true, "call-signature", "parameter"],
     "member-access": true,
     "import-name": false,
     "interface-name": [true, "never-prefix"],
-    "object-curly-spacing": [true, "always"]
+    "object-curly-spacing": [true, "always"],
+    "align": [
+      true,
+      "elements",
+      "members",
+      "parameters",
+      "statements"
+    ],
+    "max-line-length": [true, 120]
   },
   "linterOptions": {
     "exclude": [
