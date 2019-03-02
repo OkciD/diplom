@@ -1,6 +1,7 @@
 import { Action } from 'redux-actions';
 import { select, call, put, takeLatest } from 'redux-saga/effects';
-import { ActionTypes, CounterState, setCounterAction } from './';
+import { ActionTypes, setCounterAction } from './';
+import { StoreState } from '../index';
 
 function performOperation(counter: number, type: 'inc' | 'dec'): Promise<number> {
 	return new Promise((resolve) => {
@@ -11,7 +12,7 @@ function performOperation(counter: number, type: 'inc' | 'dec'): Promise<number>
 }
 
 function * operationSaga(action: Action<void>): unknown {
-	const counter: number = yield select<SelectFn<CounterState>>(({ counter }) => counter);
+	const counter: number = yield select<SelectFn<StoreState>>(({ counter }) => counter.counter);
 
 	const newCounter: number = yield call(
 		performOperation,
