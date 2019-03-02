@@ -1,6 +1,6 @@
 import { CounterState } from './';
 
-export const enum ActionTypes {
+export enum ActionTypes {
 	Inc = 'COUNTER/INC',
 	Dec = 'COUNTER/DEC',
 	Reset = 'COUNTER/RESET',
