@@ -1,0 +1,33 @@
+{
+  "extends": "tslint-config-airbnb",
+  "rules": {
+    "indent": [true, "tabs"],
+    "ter-indent": [
+      true,
+      "tab",
+      {
+        "CallExpression": {
+          "arguments": 1
+        },
+        "SwitchCase": 1
+      }
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "never",
+        "singleline": "never"
+      }
+    ],
+    "typedef": [true, "call-signature", "parameter", "arrow-parameter"],
+    "member-access": true,
+    "import-name": false,
+    "interface-name": [true, "never-prefix"],
+    "object-curly-spacing": [true, "always"]
+  },
+  "linterOptions": {
+    "exclude": [
+      "**/*.js"
+    ]
+  }
+}
