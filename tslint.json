@@ -31,7 +31,8 @@
       "parameters",
       "statements"
     ],
-    "max-line-length": [true, 120]
+    "max-line-length": [true, 120],
+    "variable-name": [true, "allow-pascal-case"]
   },
   "linterOptions": {
     "exclude": [
