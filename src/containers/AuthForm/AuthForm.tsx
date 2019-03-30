@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { Button, Text, View, TextInput } from 'react-native';
-import styles from '../Counter/Counter.styles';
 import { Container, Header, Content, Form, Item, Input, Label } from 'native-base';
 
 export default class AuthForm extends React.Component<{}> {
@@ -16,7 +14,7 @@ export default class AuthForm extends React.Component<{}> {
 						</Item>
 						<Item floatingLabel last>
 							<Label>Password</Label>
-							<Input />
+							<Input secureTextEntry/>
 						</Item>
 					</Form>
 				</Content>
