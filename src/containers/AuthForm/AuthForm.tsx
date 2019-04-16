@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { Container, Header, Content, Form, Item, Input, Label, Button, Text } from 'native-base';
 import styles from './AuthForm.styles';
-import AuthState from '../../modules/auth/auth.types';
 import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { setFieldAction } from '../../modules/auth';
-import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
+import { setFieldAction, AuthState } from '../../modules/auth';
 
 interface OwnProps {
 
@@ -25,6 +23,8 @@ type Props = OwnProps & StoreProps & DispatchProps;
 
 class AuthForm extends React.Component<Props> {
 	public render(): React.ReactNode {
+		const { login, password, setLogin, setPassword } = this.props;
+
 		return (
 			<Container>
 				<Header />
@@ -32,14 +32,18 @@ class AuthForm extends React.Component<Props> {
 					<Form>
 						<Item floatingLabel>
 							<Label>Username</Label>
-							<Input value={this.props.login} onChange={(event: NativeSyntheticEvent<TextInputChangeEventData>) => {
-								// @ts-ignore
-								console.warn(event.target.text);
-							}} />
+							<Input
+								value={login}
+								onChangeText={setLogin}
+							/>
 						</Item>
 						<Item floatingLabel>
 							<Label>Password</Label>
-							<Input secureTextEntry value={this.props.password}/>
+							<Input
+								secureTextEntry
+								value={password}
+								onChangeText={setPassword}
+							/>
 						</Item>
 					</Form>
 					<Button hasText block style={styles.button}>
@@ -57,8 +61,8 @@ function mapStateToProps(state: StoreState): StoreProps {
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 	return {
-		setLogin: login => dispatch(setFieldAction({ login })),
-		setPassword: password => dispatch(setFieldAction({ password }))
+		setLogin: (login: string) => dispatch(setFieldAction({ login })),
+		setPassword: (password: string) => dispatch(setFieldAction({ password }))
 	};
 }
 
