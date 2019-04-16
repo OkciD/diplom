@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "android": "npm run place-db:android && node node_modules/react-native/local-cli/cli.js run-android && npm run log:android",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
     "log:android": "node node_modules/react-native/local-cli/cli.js log-android",
     "place-db:android": "./place-db.sh android",
     "test": "jest",
