@@ -3,18 +3,35 @@ import { DB_NAME } from './';
 
 let db: SQLite.SQLiteDatabase;
 
-export async function openDb(): Promise<void> {
-	SQLite.DEBUG(__DEV__); // __DEV__ === true для дев-сборок
-	SQLite.enablePromise(true);
+/**
+ * @module Модуль работы с БД
+ *
+ * Да, у либы react-native-sqlite-storage есть "промис-режим", но он такой кривой, что при неудачном открытии БД
+ * промис не реджектится. Так что приходится "промисифицировать" самостоятельно.
+ */
 
-	// @ts-ignore
-	db = await SQLite.openDatabase({
-		name: DB_NAME,
-		createFromLocation: 1,
-		readOnly: true
+export function openDb(): Promise<void> {
+	SQLite.DEBUG(__DEV__); // __DEV__ === true для дев-сборок
+
+	return new Promise<void>((resolve, reject) => {
+		db = SQLite.openDatabase(
+			// @ts-ignore
+			{
+				name: DB_NAME,
+				createFromLocation: 1,
+				readOnly: true
+			},
+			() => { resolve(); },
+			(error: SQLite.SQLError) => { reject(error); }
+		);
 	});
 }
 
-export async function closeDb(): Promise<void> {
-	await db.close();
+export function closeDb(): Promise<void> {
+	return new Promise<void>((resolve, reject) => {
+		db.close(
+			() => { resolve(); },
+			(error: SQLite.SQLError) => { reject(error); }
+		);
+	});
 }
