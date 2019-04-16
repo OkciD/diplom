@@ -13,6 +13,8 @@ import { Provider } from 'react-redux';
 import configureStore from '../../modules/configureStore';
 import Counter from '../Counter';
 import { closeDb, openDb } from '../../modules/db';
+import { SQLError } from 'react-native-sqlite-storage';
+import { Alert, BackHandler } from 'react-native';
 
 interface Props {
 
@@ -37,6 +39,16 @@ export default class App extends React.Component<Props, State> {
 				this.setState({
 					ready: true
 				});
+			})
+			.catch<void>((error: SQLError) => {
+				Alert.alert(
+					'DB opening error',
+					error.message,
+					[{
+						text: 'OK',
+						onPress: () => { BackHandler.exitApp(); }
+					}]
+				);
 			});
 	}
 
@@ -45,7 +57,7 @@ export default class App extends React.Component<Props, State> {
 	}
 
 	public render(): React.ReactNode {
-		return (!this.state.ready) ? null : (
+		return (!this.state.ready) ? null : ( // TODO: null -> preloader
 			<Provider store={configureStore()}>
 				<Counter />
 			</Provider>
