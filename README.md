@@ -1,4 +1,4 @@
-# diplom
+# diplom [![Build Status](https://travis-ci.com/figulechka/diplom.svg?branch=master)](https://travis-ci.com/figulechka/diplom)
 
 ## Локальная разработка
 1. Запустить эмулятор Android  
