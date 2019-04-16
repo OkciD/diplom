@@ -4,7 +4,7 @@ import { DB_NAME } from './';
 let db: SQLite.SQLiteDatabase;
 
 export async function openDb(): Promise<void> {
-	SQLite.DEBUG(true); // TODO: remove for production
+	SQLite.DEBUG(__DEV__); // __DEV__ === true для дев-сборок
 	SQLite.enablePromise(true);
 
 	// @ts-ignore
