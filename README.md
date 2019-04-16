@@ -1,5 +1,10 @@
 # diplom [![Build Status](https://travis-ci.com/figulechka/diplom.svg?branch=master)](https://travis-ci.com/figulechka/diplom)
 
+## NPM-команды
+* `npm run android` &ndash; запуск бандлера для android;
+* `npm run log:android` &ndash; realtime просмотр логов с android-устройства или эмулятора;
+* `npm run lint` &ndash; проверка кода линтером.
+
 ## Локальная разработка
 1. Запустить эмулятор Android  
   `emulator @Pixel_XL_API_28`
