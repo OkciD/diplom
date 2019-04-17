@@ -1,7 +1,7 @@
 import SQLite from 'react-native-sqlite-storage';
 import { DB_NAME } from './';
 
-let db: SQLite.SQLiteDatabase;
+export let db: SQLite.SQLiteDatabase;
 
 /**
  * @module Модуль работы с БД
