@@ -8,6 +8,6 @@ export enum ActionTypes {
 }
 
 export const initialState: CounterState = {
-	counter: 0,
+	counter: undefined,
 	operationsLog: []
 };

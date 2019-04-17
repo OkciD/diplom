@@ -1,5 +1,5 @@
 export default interface CounterState {
-	counter: number;
+	counter: number | undefined;
 	operationsLog: string[];
 }
 
