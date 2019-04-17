@@ -2,7 +2,7 @@ import { Action } from 'redux-actions';
 import { select, call, put, takeLatest } from 'redux-saga/effects';
 import { ActionTypes, setCounterAction } from './';
 import { StoreState } from '../index';
-import { getLastValue, insertCount } from './db';
+import { getLastValue, insertCount, reset } from './db';
 
 function * operationSaga(action: Action<void>): unknown {
 	const counter: number = yield select<SelectFn<StoreState>>(({ counter }) => counter.counter);
@@ -16,6 +16,11 @@ function * operationSaga(action: Action<void>): unknown {
 	yield put(setCounterAction({ counter: newCounter }));
 }
 
+function * resetSaga(): unknown {
+	yield call(reset);
+	yield call(counterInitSaga);
+}
+
 function * counterInitSaga(): unknown {
 	const latestValue: number = yield call(getLastValue);
 
@@ -26,4 +31,5 @@ export default function * counterRootSaga(): any {
 	yield call(counterInitSaga);
 	yield takeLatest(ActionTypes.Inc, operationSaga);
 	yield takeLatest(ActionTypes.Dec, operationSaga);
+	yield takeLatest(ActionTypes.Reset, resetSaga);
 }

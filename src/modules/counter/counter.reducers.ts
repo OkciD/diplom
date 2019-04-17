@@ -22,7 +22,10 @@ function decReducer(state: CounterState): CounterState {
 }
 
 function resetReducer(state: CounterState): CounterState {
-	return state;
+	return {
+		...state,
+		operationsLog: []
+	};
 }
 
 function setCounterReducer(state: CounterState, action: Action<SetCounterPayload>): CounterState {

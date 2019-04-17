@@ -1,1 +1,1 @@
-export { getLastValue, insertCount } from './counter.db.actions';
+export { getLastValue, insertCount, reset } from './counter.db.actions';
