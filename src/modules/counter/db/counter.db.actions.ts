@@ -3,6 +3,9 @@ import { db } from '../../db';
 
 const noop = () => {};
 
+// TODO: транзакции бд однотипные - вынести в функцию в modules/db
+// TODO: логировать ответы базы
+
 export function getLastValue(): Promise<number> {
 	return new Promise<number>((resolve, reject) => {
 		db.transaction(
