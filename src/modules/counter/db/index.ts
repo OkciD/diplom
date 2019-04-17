@@ -1,1 +1,1 @@
-export { Count } from './counter.db.types.d';
+export { getLastValue, insertCount } from './counter.db.actions';
