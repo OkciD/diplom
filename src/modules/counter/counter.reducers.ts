@@ -22,7 +22,10 @@ function decReducer(state: CounterState): CounterState {
 }
 
 function resetReducer(state: CounterState): CounterState {
-	return initialState;
+	return {
+		...state,
+		operationsLog: []
+	};
 }
 
 function setCounterReducer(state: CounterState, action: Action<SetCounterPayload>): CounterState {
@@ -32,7 +35,7 @@ function setCounterReducer(state: CounterState, action: Action<SetCounterPayload
 	};
 }
 
-export default handleActions<CounterState>(
+export default handleActions<CounterState, any>(
 	{
 		[ActionTypes.Inc]: incReducer,
 		[ActionTypes.Dec]: decReducer,
