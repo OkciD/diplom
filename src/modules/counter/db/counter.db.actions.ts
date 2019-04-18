@@ -1,7 +1,4 @@
-import SQLite from 'react-native-sqlite-storage';
-import { db, executeSql } from '../../db';
-
-const noop = () => {};
+import { executeSql } from '../../db';
 
 export function getLastValue(): Promise<number> {
 	return executeSql<{ value: number }>('SELECT val as value from counts ORDER BY id DESC LIMIT 1;')
@@ -9,43 +6,11 @@ export function getLastValue(): Promise<number> {
 }
 
 export async function insertCount(operation: 'inc' | 'dec', value: number): Promise<number> {
-	return new Promise<number>((resolve, reject) => {
-		db.transaction(
-			(transaction: SQLite.Transaction) => {
-				transaction.executeSql(
-					`INSERT INTO counts (op, val) values ("${operation}", ${value});`,
-					[],
-					() => {
-						resolve(getLastValue());
-					},
-					(_, error: SQLite.SQLError) => {
-						reject(error);
-					}
-				);
-			},
-			noop,
-			noop
-		);
-	});
+	return executeSql<void>(`INSERT INTO counts (op, val) values ("${operation}", ${value});`)
+		.then<number>(getLastValue);
 }
 
 export function reset(): Promise<void> {
-	return new Promise<void>((resolve, reject) => {
-		db.transaction(
-			(transaction: SQLite.Transaction) => {
-				transaction.executeSql(
-					'DELETE FROM counts',
-					[],
-					() => {
-						resolve();
-					},
-					(_, error: SQLite.SQLError) => {
-						reject(error);
-					}
-				);
-			},
-			noop,
-			noop
-		);
-	});
+	return executeSql<void>('DELETE FROM counts')
+		.then<void>();
 }
