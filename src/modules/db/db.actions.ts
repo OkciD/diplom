@@ -1,9 +1,9 @@
 import SQLite from 'react-native-sqlite-storage';
 import { DB_NAME } from './';
 import getRandomHash from '../../utils/randomHash';
+import configureLogger from '../../utils/logger';
 
-const log = console.log.bind(console, '[DB module]');
-const logError = console.error.bind(console, '[DB module]');
+const { log, logError } = configureLogger('DB');
 
 export let db: SQLite.SQLiteDatabase;
 
@@ -41,11 +41,12 @@ export function openDb(): Promise<void> {
 
 export function executeSql<T>(query: string): Promise<T[]> {
 	return new Promise<T[]>((resolve, reject) => {
-		log('Transaction started');
+		const transactionId: string = getRandomHash(4);
+		log(`Transaction #${transactionId} started`);
 
 		db.transaction(
 			(transaction: SQLite.Transaction) => {
-				const queryId: string = getRandomHash();
+				const queryId: string = `${transactionId}:${getRandomHash(6)}`;
 				log(`Executing SQL query #${queryId} started: ${query}`);
 
 				transaction.executeSql(
@@ -65,8 +66,8 @@ export function executeSql<T>(query: string): Promise<T[]> {
 					}
 				);
 			},
-			() => { logError('Transaction failed'); },
-			() => { log('Transaction finished'); }
+			() => { logError(`Transaction #${transactionId} failed`); },
+			() => { log(`Transaction #${transactionId} finished`); }
 		);
 	});
 }
