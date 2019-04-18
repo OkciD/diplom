@@ -35,7 +35,7 @@ function setCounterReducer(state: CounterState, action: Action<SetCounterPayload
 	};
 }
 
-export default handleActions<CounterState>(
+export default handleActions<CounterState, any>(
 	{
 		[ActionTypes.Inc]: incReducer,
 		[ActionTypes.Dec]: decReducer,
