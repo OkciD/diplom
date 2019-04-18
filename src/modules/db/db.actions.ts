@@ -1,7 +1,11 @@
 import SQLite from 'react-native-sqlite-storage';
 import { DB_NAME } from './';
 
+const log = console.log.bind(console, '[DB module]');
+const logError = console.error.bind(console, '[DB module]');
+
 export let db: SQLite.SQLiteDatabase;
+let queriesCounter: number = 0;
 
 /**
  * @module Модуль работы с БД
@@ -21,8 +25,47 @@ export function openDb(): Promise<void> {
 				createFromLocation: 1,
 				readOnly: true
 			},
-			() => { resolve(); },
-			(error: SQLite.SQLError) => { reject(error); }
+			() => {
+				log(`DB "${DB_NAME}" opened`);
+
+				resolve();
+			},
+			(error: SQLite.SQLError) => {
+				logError(`Error while opening DB "${DB_NAME}": ${error.message}`);
+
+				reject(error);
+			}
+		);
+	});
+}
+
+export function executeSql<T>(query: string): Promise<T[]> {
+	return new Promise<T[]>((resolve, reject) => {
+		log('Transaction started');
+
+		db.transaction(
+			(transaction: SQLite.Transaction) => {
+				log(`Executing SQL query #${queriesCounter} started: ${query}`);
+
+				transaction.executeSql(
+					query,
+					[],
+					(_, resultSet: SQLite.ResultSet) => {
+						// @ts-ignore
+						const result: T[] = resultSet.rows.raw();
+						log(`Query #${queriesCounter++} success: ${JSON.stringify(result)}`);
+
+						resolve(result);
+					},
+					(_, error: SQLite.SQLError) => {
+						logError(`Query #${queriesCounter++} error: ${error.message}`);
+
+						reject(error);
+					}
+				);
+			},
+			() => { logError('Transaction failed'); },
+			() => { log('Transaction finished'); }
 		);
 	});
 }
@@ -30,8 +73,16 @@ export function openDb(): Promise<void> {
 export function closeDb(): Promise<void> {
 	return new Promise<void>((resolve, reject) => {
 		db.close(
-			() => { resolve(); },
-			(error: SQLite.SQLError) => { reject(error); }
+			() => {
+				log(`DB "${DB_NAME}" closed`);
+
+				resolve();
+			},
+			(error: SQLite.SQLError) => {
+				logError(`Error while closing DB "${DB_NAME}": ${error.message}`);
+
+				reject(error);
+			}
 		);
 	});
 }

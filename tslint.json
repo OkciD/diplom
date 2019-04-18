@@ -31,7 +31,8 @@
       "parameters",
       "statements"
     ],
-    "max-line-length": [true, 120]
+    "max-line-length": [true, 120],
+    "no-increment-decrement": false
   },
   "linterOptions": {
     "exclude": [

@@ -1,38 +1,14 @@
 import SQLite from 'react-native-sqlite-storage';
-import { db } from '../../db';
+import { db, executeSql } from '../../db';
 
 const noop = () => {};
 
-// TODO: транзакции бд однотипные - вынести в функцию в modules/db
-// TODO: логировать ответы базы
-
 export function getLastValue(): Promise<number> {
-	return new Promise<number>((resolve, reject) => {
-		db.transaction(
-			(transaction: SQLite.Transaction) => {
-				transaction.executeSql(
-					'SELECT val as value from counts ORDER BY id DESC LIMIT 1;',
-					[],
-					(_, resultSet: SQLite.ResultSet) => {
-						try {
-							// @ts-ignore
-							resolve(resultSet.rows.raw()[0].value);
-						} catch {
-							resolve(0);
-						}
-					},
-					(_, error: SQLite.SQLError) => {
-						reject(error);
-					}
-				);
-			},
-			noop,
-			noop
-		);
-	});
+	return executeSql<{ value: number }>('SELECT val as value from counts ORDER BY id DESC LIMIT 1;')
+		.then<number>(([valObj]) => valObj ? valObj.value : 0);
 }
 
-export function insertCount(operation: 'inc' | 'dec', value: number): Promise<number> {
+export async function insertCount(operation: 'inc' | 'dec', value: number): Promise<number> {
 	return new Promise<number>((resolve, reject) => {
 		db.transaction(
 			(transaction: SQLite.Transaction) => {
