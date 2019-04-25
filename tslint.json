@@ -32,7 +32,8 @@
       "statements"
     ],
     "max-line-length": [true, 120],
-    "no-increment-decrement": false
+    "no-increment-decrement": false,
+    "function-name": false
   },
   "linterOptions": {
     "exclude": [
