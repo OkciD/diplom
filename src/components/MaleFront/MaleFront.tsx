@@ -2,7 +2,7 @@ import Svg, { G, Path } from 'react-native-svg';
 import React from 'react';
 
 /* tslint:disable:max-line-length */
-export default function ManFront(): JSX.Element {
+export default function MaleFront(): JSX.Element {
 	return (
 		<>
 			<Svg viewBox="0 0 168 320" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414" width="70%" height="70%">

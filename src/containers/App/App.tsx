@@ -14,7 +14,7 @@ import configureStore from '../../modules/configureStore';
 import { closeDb, openDb } from '../../modules/db';
 import { SQLError } from 'react-native-sqlite-storage';
 import { Alert, BackHandler } from 'react-native';
-import { ManFront } from '../../components/ManFront';
+import { MaleFront } from '../../components/MaleFront';
 
 interface Props {
 
@@ -59,7 +59,7 @@ export default class App extends React.Component<Props, State> {
 	public render(): React.ReactNode {
 		return (!this.state.ready) ? null : ( // TODO: null -> preloader
 			<Provider store={configureStore()}>
-				<ManFront />
+				<MaleFront />
 			</Provider>
 		);
 	}
