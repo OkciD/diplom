@@ -1,6 +1,6 @@
 import Svg, { G, Path } from 'react-native-svg';
 import React from 'react';
-import { MaleFrontBodyParts, maleFrontBodypartPaths } from './index';
+import { MaleFrontBodyParts, maleFrontBodyPaths } from './index';
 
 type Props = Partial<{
 	width: number | string;
@@ -54,7 +54,7 @@ export default class MaleFront extends React.Component<Props, State> {
 					{/*	/!*oral_cavity*!/*/}
 					{/*	<Path d="M74.117 30.178l.157.24.022-.014c.445-.283.915-.527 1.393-.752a17.735 17.735 0 0 1 1.913-.765 17.499 17.499 0 0 1 4.731-.898 16.276 16.276 0 0 1 3.765.26c1.126.213 2.229.547 3.287.987a18.545 18.545 0 0 1 2.36 1.194l.142-.241.186.527c.534 1.076 1.281 2.066 2.239 2.831l-.085.758-.169.226-.014-.142a2.503 2.503 0 0 1-.007.151l-.003.023c-.786 1.13-1.961 1.963-3.22 2.54-.383.175-.775.329-1.174.464-.514.174-1.038.317-1.568.435-.611.136-1.23.238-1.851.314-.802.098-1.61.152-2.417.174-.954.025-1.91.008-2.862-.056-1.245-.084-2.489-.251-3.698-.56-.428-.11-.852-.238-1.268-.389a11.006 11.006 0 0 1-.94-.39 9.007 9.007 0 0 1-.795-.422 7.954 7.954 0 0 1-.576-.38 7.035 7.035 0 0 1-.488-.388c-.436-.382-.823-.826-1.097-1.339l-.036-.177v.008l-.136-1.052c.847-.708 1.525-1.632 2.019-2.629l.19-.538z" />*/}
 					{/*</G>*/}
-					{maleFrontBodypartPaths.map(([bodyPart, path]) => {
+					{maleFrontBodyPaths.map(([bodyPart, path]) => {
 						const isSelected: boolean = (this.state.selectedBodyPart === bodyPart);
 
 						return (

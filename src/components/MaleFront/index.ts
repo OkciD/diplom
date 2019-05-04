@@ -1,2 +1,2 @@
 export { default as MaleFront } from './MaleFront';
-export { MaleFrontBodyParts, maleFrontBodypartPaths } from './MaleFront.bodyparts';
+export { MaleFrontBodyParts, maleFrontBodyPaths, MaleFrontHeadParts, maleFrontHeadPaths } from './MaleFront.bodyparts';
