@@ -14,7 +14,7 @@ import configureStore from '../../modules/configureStore';
 import { closeDb, openDb } from '../../modules/db';
 import { SQLError } from 'react-native-sqlite-storage';
 import { Alert, BackHandler } from 'react-native';
-import { MaleFront, MaleFrontBodyParts } from '../../components/HumanBody';
+import { MaleFront, MaleFrontBodyParts } from '../../components/MaleFront';
 
 interface Props {
 
