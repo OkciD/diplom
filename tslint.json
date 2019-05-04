@@ -33,7 +33,7 @@
     ],
     "max-line-length": [true, 120],
     "no-increment-decrement": false,
-    "function-name": false
+    "semicolon": [true, "always", "strict-bound-class-methods"]
   },
   "linterOptions": {
     "exclude": [
