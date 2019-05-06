@@ -3,6 +3,7 @@ import { BodyPartsState, selectBodyPartAction } from '../../modules/bodyParts';
 import { connect } from 'react-redux';
 import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
+import { HumanBody } from '../../components/HumanBody';
 
 interface OwnProps {
 
@@ -20,7 +21,16 @@ type Props = OwnProps & StoreProps & DispatchProps;
 
 class BodyPartSelector extends React.Component<Props> {
 	public render(): React.ReactElement | null {
-		return null;
+		const { selectedBodyPartId, gender, position, selectBodyPart } = this.props;
+
+		return (
+			<HumanBody
+				selectedBodyPartId={selectedBodyPartId}
+				gender={gender}
+				position={position}
+				onBodyPartPress={selectBodyPart}
+			/>
+		);
 	}
 }
 
