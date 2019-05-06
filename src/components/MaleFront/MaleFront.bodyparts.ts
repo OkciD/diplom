@@ -1,23 +1,23 @@
 // TODO заменить строки с капсом на id из базы
 export enum MaleFrontBodyParts {
-	Head = 'MALE_FRONT_BODY_HEAD',
-	Eyes = 'MALE_FRONT_BODY_EYES',
-	Ears = 'MALE_FRONT_BODY_EARS',
-	Nose = 'MALE_FRONT_BODY_NOSE',
-	OralCavity = 'MALE_FRONT_BODY_ORAL_CAVITY',
-	NeckOrThroat = 'MALE_FRONT_BODY_NECK_OR_THROAT',
-	Chest = 'MALE_FRONT_BODY_CHEST',
-	UpperArm = 'MALE_FRONT_BODY_UPPER_ARM',
-	UpperAbdomen = 'MALE_FRONT_BODY_UPPER_ABDOMEN',
-	Forearm = 'MALE_FRONT_BODY_FOREARM',
-	MidAbdomen = 'MALE_FRONT_BODY_MID_ABDOMEN',
-	LowerAbdomen = 'MALE_FRONT_BODY_LOWER_ABDOMEN',
-	Hand = 'MALE_FRONT_BODY_HAND',
-	SexualOrgans = 'MALE_FRONT_BODY_SEXUAL_ORGANS',
-	Thigh = 'MALE_FRONT_BODY_THIGH',
-	Knee = 'MALE_FRONT_BODY_KNEE',
-	LowerLeg = 'MALE_FRONT_BODY_LOWER_LEG',
-	Foot = 'MALE_FRONT_BODY_FOOT'
+	Head = 1,
+	Eyes,
+	Ears,
+	Nose,
+	OralCavity,
+	NeckOrThroat,
+	Chest,
+	UpperArm,
+	UpperAbdomen,
+	Forearm,
+	MidAbdomen,
+	LowerAbdomen,
+	Hand,
+	SexualOrgans,
+	Thigh,
+	Knee,
+	LowerLeg,
+	Foot
 }
 
 /* tslint:disable:max-line-length */
