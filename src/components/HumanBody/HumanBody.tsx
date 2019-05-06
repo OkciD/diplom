@@ -1,6 +1,6 @@
 import Svg, { G, Path } from 'react-native-svg';
 import React from 'react';
-import { MaleFrontPaths } from './';
+import { MaleFrontPaths, MaleBackPaths } from './';
 
 type Props = Partial<{
 	width: number | string;
@@ -35,7 +35,7 @@ export default function HumanBody(props: Props): React.ReactElement {
 			break;
 		}
 		case ((gender === 'male') && (position === 'back')): {
-			paths = MaleFrontPaths; // TODO: MaleBackPaths
+			paths = MaleBackPaths;
 			break;
 		}
 		case ((gender === 'female') && (position === 'front')): {
