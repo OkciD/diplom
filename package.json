@@ -17,6 +17,7 @@
     }
   },
   "dependencies": {
+    "native-base": "^2.12.1",
     "react": "16.6.3",
     "react-native": "0.58.6",
     "react-native-sqlite-storage": "^3.3.10",
