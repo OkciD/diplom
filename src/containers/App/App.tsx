@@ -59,7 +59,7 @@ export default class App extends React.Component<Props, State> {
 	public render(): React.ReactNode {
 		return (!this.state.ready) ? null : ( // TODO: null -> preloader
 			<Provider store={configureStore()}>
-				<Counter />
+				<BodyPartSelector />
 			</Provider>
 		);
 	}
