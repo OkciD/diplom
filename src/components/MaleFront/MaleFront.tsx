@@ -41,7 +41,7 @@ export default class MaleFront extends React.Component<Props, State> {
 					strokeLinejoin="round"
 					strokeMiterlimit="1.414"
 				>
-					<Path d={maleFrontBodyPath}/>
+					<Path d={maleFrontBodyPath} />
 				</G>
 				<G fill="none">
 					{maleFrontBodyPaths.map(([bodyPart, path]) => {
@@ -53,7 +53,7 @@ export default class MaleFront extends React.Component<Props, State> {
 								d={path}
 								{...(isSelected) && { // стили, "подсвечивающие" кликнутую часть тела
 									fill: '#3F51B5',
-									fillOpacity: '0.3'
+									fillOpacity: 0.3
 								}}
 								onPress={() => this.onBodyPartPress(bodyPart)}
 							/>
