@@ -39,10 +39,11 @@ class BodyPartSelector extends React.Component<Props> {
 			case SWIPE_LEFT:
 			case SWIPE_RIGHT: {
 				rotate();
+				break;
+			}
+			default: {
 				return;
 			}
-			default:
-				return;
 		}
 	};
 
