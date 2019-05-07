@@ -7,6 +7,8 @@ import { HumanBody } from '../../components/HumanBody';
 import { View } from 'native-base';
 import styles from './BodyPartSelector.styles';
 import { RotateButton } from '../../components/RotateButton';
+// @ts-ignore
+import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 
 interface OwnProps {
 
@@ -24,17 +26,39 @@ interface DispatchProps {
 type Props = OwnProps & StoreProps & DispatchProps;
 
 class BodyPartSelector extends React.Component<Props> {
+	private readonly gestureRecognizerConfig = {
+		velocityThreshold: 0.3,
+		directionalOffsetThreshold: 80
+	};
+
+	private readonly onSwipe = (gestureName: string) => {
+		const { SWIPE_LEFT, SWIPE_RIGHT } = swipeDirections;
+		const { rotate } = this.props;
+
+		switch (gestureName) {
+			case SWIPE_LEFT:
+			case SWIPE_RIGHT: {
+				rotate();
+				return;
+			}
+			default:
+				return;
+		}
+	};
+
 	public render(): React.ReactElement | null {
 		const { selectedBodyPartId, gender, position, selectBodyPart, rotate } = this.props;
 
 		return (
 			<View style={styles.container}>
-				<HumanBody
-					selectedBodyPartId={selectedBodyPartId}
-					gender={gender}
-					position={position}
-					onBodyPartPress={selectBodyPart}
-				/>
+				<GestureRecognizer config={this.gestureRecognizerConfig} onSwipe={this.onSwipe}>
+					<HumanBody
+						selectedBodyPartId={selectedBodyPartId}
+						gender={gender}
+						position={position}
+						onBodyPartPress={selectBodyPart}
+					/>
+				</GestureRecognizer>
 				<View style={styles.rotateButtonContainer}>
 					<RotateButton onPress={rotate}/>
 				</View>
