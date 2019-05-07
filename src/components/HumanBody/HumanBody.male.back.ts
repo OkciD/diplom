@@ -1,19 +1,19 @@
 enum MaleBackBodyParts {
-	Head = 101,
-	Ears,
-	NeckOrThroat,
-	NapeOfNack,
-	Back,
-	UpperArm,
-	Elbow,
-	LowerBack,
-	Forearm,
-	Buttocks,
-	Anus,
-	Hand,
-	Thigh,
-	LowerLeg,
-	Foot
+	Head = 1,
+	Ears = 3,
+	NeckOrThroat = 6,
+	NapeOfNack = 19,
+	Back = 20,
+	UpperArm = 8,
+	Elbow = 21,
+	LowerBack = 22,
+	Forearm = 10,
+	Buttocks = 23,
+	Anus = 24,
+	Hand = 13,
+	Thigh = 15,
+	LowerLeg = 17,
+	Foot = 18
 }
 
 /* tslint:disable:max-line-length */
