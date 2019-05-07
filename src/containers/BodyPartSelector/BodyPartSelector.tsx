@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BodyPartsState, selectBodyPartAction } from '../../modules/bodyParts';
+import { BodyPartsState, selectBodyPartAction, switchPositionAction } from '../../modules/bodyParts';
 import { connect } from 'react-redux';
 import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
@@ -18,13 +18,14 @@ interface StoreProps extends BodyPartsState {
 
 interface DispatchProps {
 	selectBodyPart: (bodyPartId: number) => void;
+	rotate: () => void;
 }
 
 type Props = OwnProps & StoreProps & DispatchProps;
 
 class BodyPartSelector extends React.Component<Props> {
 	public render(): React.ReactElement | null {
-		const { selectedBodyPartId, gender, position, selectBodyPart } = this.props;
+		const { selectedBodyPartId, gender, position, selectBodyPart, rotate } = this.props;
 
 		return (
 			<View style={styles.container}>
@@ -35,7 +36,7 @@ class BodyPartSelector extends React.Component<Props> {
 					onBodyPartPress={selectBodyPart}
 				/>
 				<View style={styles.rotateButtonContainer}>
-					<RotateButton />
+					<RotateButton onPress={rotate}/>
 				</View>
 			</View>
 		);
@@ -48,7 +49,8 @@ function mapStateToProps(state: StoreState): StoreProps {
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 	return {
-		selectBodyPart: (bodyPartId: number) => dispatch(selectBodyPartAction({ bodyPartId }))
+		selectBodyPart: (bodyPartId: number) => dispatch(selectBodyPartAction({ bodyPartId })),
+		rotate: () => dispatch(switchPositionAction())
 	};
 }
 
