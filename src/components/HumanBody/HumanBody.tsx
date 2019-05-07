@@ -19,8 +19,8 @@ interface Paths {
 // tslint:disable-next-line:function-name
 export default function HumanBody(props: Props): React.ReactElement {
 	const {
-		width = '100%',
-		height = '100%',
+		width = 1.7 * 168,
+		height = 1.7 * 320,
 		onBodyPartPress = () => {},
 		selectedBodyPartId = null,
 		gender = 'male',

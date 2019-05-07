@@ -15,6 +15,8 @@ import { closeDb, openDb } from '../../modules/db';
 import { SQLError } from 'react-native-sqlite-storage';
 import { Alert, BackHandler } from 'react-native';
 import { BodyPartSelector } from '../BodyPartSelector';
+import { Container, Content, Header } from 'native-base';
+import styles from './App.styles';
 
 interface Props {
 
@@ -59,7 +61,12 @@ export default class App extends React.Component<Props, State> {
 	public render(): React.ReactNode {
 		return (!this.state.ready) ? null : ( // TODO: null -> preloader
 			<Provider store={configureStore()}>
-				<BodyPartSelector />
+				<Container style={{ flex: 1 }}>
+					<Header style={styles.header}/>
+					<Content>
+						<BodyPartSelector />
+					</Content>
+				</Container>
 			</Provider>
 		);
 	}

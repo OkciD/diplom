@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
 import { HumanBody } from '../../components/HumanBody';
+import { View } from 'native-base';
+import styles from './BodyPartSelector.styles';
 
 interface OwnProps {
 
@@ -24,12 +26,14 @@ class BodyPartSelector extends React.Component<Props> {
 		const { selectedBodyPartId, gender, position, selectBodyPart } = this.props;
 
 		return (
-			<HumanBody
-				selectedBodyPartId={selectedBodyPartId}
-				gender={gender}
-				position={position}
-				onBodyPartPress={selectBodyPart}
-			/>
+			<View style={styles.container}>
+				<HumanBody
+					selectedBodyPartId={selectedBodyPartId}
+					gender={gender}
+					position={position}
+					onBodyPartPress={selectBodyPart}
+				/>
+			</View>
 		);
 	}
 }
