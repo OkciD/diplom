@@ -1,6 +1,7 @@
 import Svg, { G, Path } from 'react-native-svg';
 import React from 'react';
 import { MaleFrontPaths, MaleBackPaths } from './';
+import commonColor from '../../../native-base-theme/variables/commonColor';
 
 type Props = Partial<{
 	width: number | string;
@@ -55,7 +56,7 @@ export default function HumanBody(props: Props): React.ReactElement {
 	return (
 		<Svg viewBox="0 0 168 320" width={width} height={height}>
 			<G
-				fill="#3F51B5"
+				fill={commonColor.brandPrimary}
 				fillRule="evenodd"
 				strokeLinejoin="round"
 				strokeMiterlimit="1.414"
