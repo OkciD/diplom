@@ -6,6 +6,7 @@ import { Dispatch } from 'redux';
 import { HumanBody } from '../../components/HumanBody';
 import { View } from 'native-base';
 import styles from './BodyPartSelector.styles';
+import RotateButton from '../../components/RotateButton/RotateButton';
 
 interface OwnProps {
 
@@ -33,6 +34,9 @@ class BodyPartSelector extends React.Component<Props> {
 					position={position}
 					onBodyPartPress={selectBodyPart}
 				/>
+				<View style={styles.rotateButtonContainer}>
+					<RotateButton />
+				</View>
 			</View>
 		);
 	}
