@@ -72,7 +72,7 @@ export default function HumanBody(props: Props): React.ReactElement {
 							key={bodyPartId}
 							d={path}
 							{...(isSelected) && { // стили, "подсвечивающие" кликнутую часть тела
-								fill: '#3F51B5',
+								fill: commonColor.brandPrimary,
 								fillOpacity: 0.3
 							}}
 							onPress={() => onBodyPartPress(bodyPartId)}
