@@ -26,13 +26,14 @@ interface Props {
  */
 export default class Router extends React.Component<Props> {
 	private createRoutes(): ReactNativeEasyRouterProps['routes'] {
-		return Object.entries(this.props.routes)
-			.reduce((routes: ReactNativeEasyRouterProps['routes'], [routeName, Component]) => ({
+		return Object.entries(this.props.routes).reduce(
+			(routes: ReactNativeEasyRouterProps['routes'], [routeName, Component]) => ({
 				...routes,
 				[routeName]: ({ router, ...params }: RoutingElementParams) => (
 					<Component router={router} routingParams={params}/>
 				)
-			}), {}
+			}),
+			{}
 		);
 	}
 
