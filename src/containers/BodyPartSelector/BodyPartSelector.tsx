@@ -11,7 +11,7 @@ import { RotateButton } from '../../components/RotateButton';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 
 interface OwnProps {
-
+	routeTest: () => void;
 }
 
 interface StoreProps extends BodyPartsState {
@@ -48,7 +48,7 @@ class BodyPartSelector extends React.Component<Props> {
 	};
 
 	public render(): React.ReactElement | null {
-		const { selectedBodyPartId, gender, position, selectBodyPart, rotate } = this.props;
+		const { selectedBodyPartId, gender, position, selectBodyPart, rotate, routeTest } = this.props;
 
 		return (
 			<View style={styles.container}>
@@ -64,7 +64,7 @@ class BodyPartSelector extends React.Component<Props> {
 					<RotateButton onPress={rotate}/>
 				</View>
 				{/*TODO: render if at least one symptom is selected*/}
-				<Fab position="bottomRight" style={styles.fab}>
+				<Fab position="bottomRight" style={styles.fab} onPress={routeTest}>
 					<Icon
 						type="MaterialCommunityIcons"
 						name="arrow-right"
