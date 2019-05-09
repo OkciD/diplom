@@ -5,6 +5,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { View, Text, Button } from 'react-native';
 import styles from './Counter.styles';
+import { RouterProps } from '../Router';
 
 interface OwnProps {
 
@@ -20,7 +21,7 @@ interface DispatchProps {
 	resetCounter: () => void;
 }
 
-type Props = OwnProps & StoreProps & DispatchProps;
+type Props = OwnProps & StoreProps & DispatchProps & RouterProps;
 
 class Counter extends React.Component<Props> {
 	public render(): React.ReactNode {
