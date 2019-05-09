@@ -63,6 +63,7 @@ class BodyPartSelector extends React.Component<Props> {
 				<View style={styles.rotateButtonContainer}>
 					<RotateButton onPress={rotate}/>
 				</View>
+				{/*TODO: render if at least one symptom is selected*/}
 				<Fab position="bottomRight" style={styles.fab}>
 					<Icon
 						type="MaterialCommunityIcons"
