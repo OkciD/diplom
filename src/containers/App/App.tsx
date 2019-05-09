@@ -11,10 +11,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from '../../modules/configureStore';
-import Counter from '../Counter';
 import { closeDb, openDb } from '../../modules/db';
 import { SQLError } from 'react-native-sqlite-storage';
 import { Alert, BackHandler } from 'react-native';
+import { BodyPartSelector } from '../BodyPartSelector';
+import { Button, Container, Content, Header, Icon, Left, Right, Body } from 'native-base';
+import styles from './App.styles';
 
 interface Props {
 
@@ -59,7 +61,20 @@ export default class App extends React.Component<Props, State> {
 	public render(): React.ReactNode {
 		return (!this.state.ready) ? null : ( // TODO: null -> preloader
 			<Provider store={configureStore()}>
-				<Counter />
+				<Container>
+					<Header style={styles.header}>
+						<Left>
+							<Button transparent>
+								<Icon name="menu" />
+							</Button>
+						</Left>
+						<Body />
+						<Right />
+					</Header>
+					<Content>
+						<BodyPartSelector />
+					</Content>
+				</Container>
 			</Provider>
 		);
 	}
