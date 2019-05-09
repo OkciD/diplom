@@ -17,6 +17,8 @@ import { Alert, BackHandler } from 'react-native';
 import { Button, Container, Header, Icon, Left, Right, Body } from 'native-base';
 import styles from './App.styles';
 import { Router } from '../Router';
+import { BodyPartSelector } from '../BodyPartSelector';
+import Counter from '../Counter';
 
 interface Props {
 
@@ -71,7 +73,13 @@ export default class App extends React.Component<Props, State> {
 						<Body />
 						<Right />
 					</Header>
-					<Router />
+					<Router
+						routes={{
+							BodyPartSelector,
+							Counter
+						}}
+						initialRoute="BodyPartSelector"
+					/>
 				</Container>
 			</Provider>
 		);
