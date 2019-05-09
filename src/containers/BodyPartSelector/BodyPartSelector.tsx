@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
 import { HumanBody } from '../../components/HumanBody';
-import { View } from 'native-base';
+import { View, Fab, Icon } from 'native-base';
 import styles from './BodyPartSelector.styles';
 import { RotateButton } from '../../components/RotateButton';
 // @ts-ignore
@@ -63,6 +63,12 @@ class BodyPartSelector extends React.Component<Props> {
 				<View style={styles.rotateButtonContainer}>
 					<RotateButton onPress={rotate}/>
 				</View>
+				<Fab position="bottomRight" style={styles.fab}>
+					<Icon
+						type="MaterialCommunityIcons"
+						name="arrow-right"
+					/>
+				</Fab>
 			</View>
 		);
 	}
