@@ -16,6 +16,16 @@ interface HeaderContents {
 	}>;
 }
 
+const renderBackButton: RenderFunction = (state: StoreState, dispatch: Dispatch, router: Router) => (
+	<Button transparent>
+		<Icon
+			type="MaterialCommunityIcons"
+			name="arrow-left"
+			onPress={() => router.pop() }
+		/>
+	</Button>
+);
+
 const headerContents: HeaderContents = {
 	BodyPartSelector: {
 		renderLeft: (state: StoreState, dispatch: Dispatch, router: Router) => (
@@ -23,7 +33,7 @@ const headerContents: HeaderContents = {
 				<Icon
 					type="MaterialCommunityIcons"
 					name="account"
-					onPress={() => { router.push.Counter({}, { type: 'top' }); }}
+					onPress={() => router.push.Counter({}, { type: 'top' })}
 				/>
 			</Button>
 		),
@@ -40,6 +50,10 @@ const headerContents: HeaderContents = {
 				</Button>
 			);
 		}
+	},
+	Counter: {
+		title: 'Счётчик',
+		renderLeft: renderBackButton
 	}
 };
 
