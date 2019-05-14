@@ -75,7 +75,9 @@ export default class App extends React.Component<Props, State> {
 							Counter
 						}}
 						initialRoute="BodyPartSelector"
-						getRouter={(router) => { this.setState({ router }); }}
+						getRouter={(router) => {
+							!this.state.router && this.setState({ router });
+						}}
 					/>
 				</Container>
 			</Provider>
