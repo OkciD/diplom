@@ -75,7 +75,7 @@ export default class App extends React.Component<Props, State> {
 							Counter
 						}}
 						initialRoute="BodyPartSelector"
-						getRouter={(router) => {
+						getRouter={(router: ReactNativeEasyRouterObject) => {
 							!this.state.router && this.setState({ router });
 						}}
 					/>
