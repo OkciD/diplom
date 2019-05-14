@@ -14,11 +14,11 @@ import configureStore from '../../modules/configureStore';
 import { closeDb, openDb } from '../../modules/db';
 import { SQLError } from 'react-native-sqlite-storage';
 import { Alert, BackHandler } from 'react-native';
-import { Button, Container, Header, Icon, Left, Right, Body } from 'native-base';
-import styles from './App.styles';
+import { Container } from 'native-base';
 import { Router } from '../Router';
 import { BodyPartSelector } from '../BodyPartSelector';
 import Counter from '../Counter';
+import { Header } from '../Header';
 
 interface Props {
 
@@ -64,15 +64,7 @@ export default class App extends React.Component<Props, State> {
 		return (!this.state.ready) ? null : ( // TODO: null -> preloader
 			<Provider store={configureStore()}>
 				<Container>
-					<Header style={styles.header}>
-						<Left>
-							<Button transparent>
-								<Icon name="menu" />
-							</Button>
-						</Left>
-						<Body />
-						<Right />
-					</Header>
+					<Header />
 					<Router
 						routes={{
 							BodyPartSelector,
