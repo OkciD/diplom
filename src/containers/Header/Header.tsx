@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { RouterProps } from '../Router';
 import styles from './Header.styles';
 import { Body, Header as NativeBaseHeader, Left, Right, Title } from 'native-base';
 import { headerContents } from './';
 import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { Router } from 'react-native-easy-router';
 
 interface OwnProps {
-
+	router: Router;
 }
 
 interface StoreProps {
@@ -19,11 +19,11 @@ interface DispatchProps {
 	dispatch: Dispatch;
 }
 
-type Props = OwnProps & StoreProps & DispatchProps & RouterProps;
+type Props = OwnProps & StoreProps & DispatchProps;
 
 class Header extends React.Component<Props> {
 	public render(): React.ReactElement | null {
-		const { state, dispatch } = this.props;
+		const { state, dispatch, router } = this.props;
 		const { currentRoute } = state.routing;
 
 		if (!currentRoute) {
@@ -36,13 +36,13 @@ class Header extends React.Component<Props> {
 		return (
 			<NativeBaseHeader style={styles.header}>
 				<Left>
-					{renderLeft && renderLeft(state, dispatch)}
+					{renderLeft && renderLeft(state, dispatch, router)}
 				</Left>
 				<Body>
 					{title && (<Title>{title}</Title>)}
 				</Body>
 				<Right>
-					{renderRight && renderRight(state, dispatch)}
+					{renderRight && renderRight(state, dispatch, router)}
 				</Right>
 			</NativeBaseHeader>
 		);
@@ -57,4 +57,4 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 	return { dispatch };
 }
 
-export default connect<StoreProps, DispatchProps, any, any>(mapStateToProps, mapDispatchToProps)(Header);
+export default connect<StoreProps, DispatchProps, OwnProps, any>(mapStateToProps, mapDispatchToProps)(Header);

@@ -20,6 +20,7 @@ interface OwnProps {
 		[routeName: string]: ConnectedComponentClass<any, RouterProps>;
 	};
 	initialRoute: string;
+	getRouter: (router: ReactNativeEasyRouterObject) => void;
 }
 
 interface StoreProps {
@@ -51,13 +52,14 @@ class Router extends React.Component<Props> {
 	}
 
 	public render(): React.ReactNode {
-		const { initialRoute, setStack } = this.props;
+		const { initialRoute, setStack, getRouter } = this.props;
 
 		return (
 			<ReactNativeEasyRouter
 				routes={this.createRoutes()}
 				initialRoute={initialRoute}
 				onStackChange={setStack}
+				router={getRouter}
 			/>
 		);
 	}
@@ -73,4 +75,4 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 	};
 }
 
-export default connect<StoreProps, DispatchProps, any, any>(mapStateToProps, mapDispatchToProps)(Router);
+export default connect<StoreProps, DispatchProps, OwnProps, any>(mapStateToProps, mapDispatchToProps)(Router);

@@ -19,6 +19,7 @@ import { Router } from '../Router';
 import { BodyPartSelector } from '../BodyPartSelector';
 import Counter from '../Counter';
 import { Header } from '../Header';
+import { Router as ReactNativeEasyRouterObject } from 'react-native-easy-router';
 
 interface Props {
 
@@ -26,6 +27,7 @@ interface Props {
 
 interface State {
 	ready: boolean;
+	router?: ReactNativeEasyRouterObject;
 }
 
 export default class App extends React.Component<Props, State> {
@@ -61,16 +63,19 @@ export default class App extends React.Component<Props, State> {
 	}
 
 	public render(): React.ReactNode {
-		return (!this.state.ready) ? null : ( // TODO: null -> preloader
+		const { ready, router } = this.state;
+
+		return (!ready) ? null : ( // TODO: null -> preloader
 			<Provider store={configureStore()}>
 				<Container>
-					<Header />
+					<Header router={router!} />
 					<Router
 						routes={{
 							BodyPartSelector,
 							Counter
 						}}
 						initialRoute="BodyPartSelector"
+						getRouter={(router) => { this.setState({ router }); }}
 					/>
 				</Container>
 			</Provider>

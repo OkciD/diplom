@@ -3,8 +3,9 @@ import { Button, Icon } from 'native-base';
 import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
 import { BodyPartsState, setGenderAction } from '../../modules/bodyParts';
+import { Router } from 'react-native-easy-router';
 
-type RenderFunction = (state: StoreState, dispatch: Dispatch) => React.ReactElement;
+type RenderFunction = (state: StoreState, dispatch: Dispatch, router: Router) => React.ReactElement;
 
 interface HeaderContents {
 	[route: string]: Partial<{
@@ -17,9 +18,13 @@ interface HeaderContents {
 
 const headerContents: HeaderContents = {
 	BodyPartSelector: {
-		renderLeft: () => (
+		renderLeft: (state: StoreState, dispatch: Dispatch, router: Router) => (
 			<Button transparent>
-				<Icon type="MaterialCommunityIcons" name="account" />
+				<Icon
+					type="MaterialCommunityIcons"
+					name="account"
+					onPress={() => { router.push.Counter({}, { type: 'top' }); }}
+				/>
 			</Button>
 		),
 		renderRight: ({ bodyParts }: StoreState, dispatch: Dispatch) => {
