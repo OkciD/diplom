@@ -56,4 +56,4 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 	};
 }
 
-export default connect<StoreProps, DispatchProps, any, any>(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect<StoreProps, DispatchProps, OwnProps, any>(mapStateToProps, mapDispatchToProps)(Counter);
