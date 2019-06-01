@@ -35,6 +35,25 @@ class Survey extends React.Component<Props, State> {
 	public render(): React.ReactNode {
 		return (
 			<Content style={styles.container}>
+				<View>
+					<Text style={styles.question}>Пол</Text>
+					<ListItem>
+						<Left>
+							<Text>Мужчина</Text>
+						</Left>
+						<Right>
+							<Radio selected={false} />
+						</Right>
+					</ListItem>
+					<ListItem>
+						<Left>
+							<Text>Женщина</Text>
+						</Left>
+						<Right>
+							<Radio selected={true} />
+						</Right>
+					</ListItem>
+				</View>
 				{this.questions.map((question) => (
 					<View key={question}>
 						<Text style={styles.question}>{question}</Text>

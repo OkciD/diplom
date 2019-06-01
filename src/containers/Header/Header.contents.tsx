@@ -54,6 +54,10 @@ const headerContents: HeaderContents = {
 	Counter: {
 		title: 'Счётчик',
 		renderLeft: renderBackButton
+	},
+	Survey: {
+		title: 'Опрос',
+		renderLeft: renderBackButton
 	}
 };
 
