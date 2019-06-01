@@ -99,6 +99,7 @@ class Survey extends React.Component<Props, State> {
 							</ListItem>
 						</View>
 					))}
+					<View style={styles.spacer} />
 				</Content>
 				<Fab position="bottomRight" style={styles.fab}>
 					<Icon

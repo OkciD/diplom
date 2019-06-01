@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
 	fab: {
 		backgroundColor: commonColor.brandPrimary
 	},
-	list: {
-		marginBottom: 100
+	spacer: {
+		height: 100
 	}
 });
 
