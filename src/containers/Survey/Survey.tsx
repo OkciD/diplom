@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Content, Text, ListItem, Left, Right, Radio, View, Icon, Fab } from 'native-base';
+import {Content, Text, ListItem, Left, Right, Radio, View, Icon, Fab} from 'native-base';
 import styles from './Survey.styles';
 import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
