@@ -55,14 +55,15 @@ class BodyPartSelector extends React.Component<Props> {
 		const { selectedBodyPartId, gender, position, selectBodyPart, rotate } = this.props;
 
 		return (
-			<GestureRecognizer config={this.gestureRecognizerConfig} onSwipe={this.onSwipe}>
-				<View style={styles.container}>
-					<HumanBody
-						selectedBodyPartId={selectedBodyPartId}
-						gender={gender}
-						position={position}
-						onBodyPartPress={selectBodyPart}
-					/>
+			<View style={styles.container}>
+					<GestureRecognizer config={this.gestureRecognizerConfig} onSwipe={this.onSwipe}>
+						<HumanBody
+							selectedBodyPartId={selectedBodyPartId}
+							gender={gender}
+							position={position}
+							onBodyPartPress={selectBodyPart}
+						/>
+					</GestureRecognizer>
 					<View style={styles.rotateButtonContainer}>
 						<RotateButton onPress={rotate}/>
 					</View>
@@ -73,8 +74,7 @@ class BodyPartSelector extends React.Component<Props> {
 							name="arrow-right"
 						/>
 					</Fab>
-				</View>
-			</GestureRecognizer>
+			</View>
 		);
 	}
 }
