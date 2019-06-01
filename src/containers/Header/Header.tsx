@@ -1,5 +1,4 @@
 import * as React from 'react';
-import styles from './Header.styles';
 import { Body, Header as NativeBaseHeader, Left, Right, Title } from 'native-base';
 import { headerContents } from './';
 import { StoreState } from '../../modules/index';
@@ -34,7 +33,7 @@ class Header extends React.Component<Props> {
 		const { title, renderLeft, renderBody, renderRight } = headerContents[currentRoute!.route] || {};
 
 		return (
-			<NativeBaseHeader style={styles.header}>
+			<NativeBaseHeader>
 				<Left>
 					{renderLeft && renderLeft(state, dispatch, router)}
 				</Left>

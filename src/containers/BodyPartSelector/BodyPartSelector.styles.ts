@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-		flex: 1
+		flex: 1,
+		marginTop: 15
 	},
 	rotateButtonContainer: {
 		marginTop: 15
