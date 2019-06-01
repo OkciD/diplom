@@ -19,6 +19,7 @@ import { Router } from '../Router';
 import { BodyPartSelector } from '../BodyPartSelector';
 import Counter from '../Counter';
 import { Header } from '../Header';
+import { RegForm } from '../RegForm';
 import { Router as ReactNativeEasyRouterObject } from 'react-native-easy-router';
 
 interface Props {
@@ -72,9 +73,10 @@ export default class App extends React.Component<Props, State> {
 					<Router
 						routes={{
 							BodyPartSelector,
-							Counter
+							Counter,
+							RegForm
 						}}
-						initialRoute="BodyPartSelector"
+						initialRoute="RegForm"
 						getRouter={(router: ReactNativeEasyRouterObject) => {
 							!this.state.router && this.setState({ router });
 						}}
