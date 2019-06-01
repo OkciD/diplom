@@ -8,10 +8,11 @@ const styles = StyleSheet.create({
 	},
 	searchBarContainer: {
 		marginTop: 2,
-		paddingTop: 0,
-		marginBottom: 20
+		paddingTop: 0
 	},
 	selectedSymptomsContainer: {
+		marginTop: 20,
+
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
