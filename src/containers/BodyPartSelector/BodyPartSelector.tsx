@@ -9,6 +9,7 @@ import styles from './BodyPartSelector.styles';
 import { RotateButton } from '../../components/RotateButton';
 // @ts-ignore
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
+import { RouterProps } from '../Router';
 
 interface OwnProps {
 
@@ -23,7 +24,7 @@ interface DispatchProps {
 	rotate: () => void;
 }
 
-type Props = OwnProps & StoreProps & DispatchProps;
+type Props = OwnProps & StoreProps & DispatchProps & RouterProps;
 
 class BodyPartSelector extends React.Component<Props> {
 	private readonly gestureRecognizerConfig = {
@@ -47,6 +48,10 @@ class BodyPartSelector extends React.Component<Props> {
 		}
 	};
 
+	private readonly onFabPress = () => {
+		this.props.router.push.Counter({}, { type: 'right' });
+	};
+
 	public render(): React.ReactElement | null {
 		const { selectedBodyPartId, gender, position, selectBodyPart, rotate } = this.props;
 
@@ -64,7 +69,7 @@ class BodyPartSelector extends React.Component<Props> {
 					<RotateButton onPress={rotate}/>
 				</View>
 				{/*TODO: render if at least one symptom is selected*/}
-				<Fab position="bottomRight" style={styles.fab}>
+				<Fab position="bottomRight" style={styles.fab} onPress={this.onFabPress}>
 					<Icon
 						type="MaterialCommunityIcons"
 						name="arrow-right"
@@ -86,4 +91,4 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 	};
 }
 
-export default connect<StoreProps, DispatchProps, any, any>(mapStateToProps, mapDispatchToProps)(BodyPartSelector);
+export default connect<StoreProps, DispatchProps, OwnProps, any>(mapStateToProps, mapDispatchToProps)(BodyPartSelector);

@@ -14,9 +14,12 @@ import configureStore from '../../modules/configureStore';
 import { closeDb, openDb } from '../../modules/db';
 import { SQLError } from 'react-native-sqlite-storage';
 import { Alert, BackHandler } from 'react-native';
+import { Container } from 'native-base';
+import { Router } from '../Router';
 import { BodyPartSelector } from '../BodyPartSelector';
-import { Button, Container, Content, Header, Icon, Left, Right, Body } from 'native-base';
-import styles from './App.styles';
+import Counter from '../Counter';
+import { Header } from '../Header';
+import { Router as ReactNativeEasyRouterObject } from 'react-native-easy-router';
 
 interface Props {
 
@@ -24,6 +27,7 @@ interface Props {
 
 interface State {
 	ready: boolean;
+	router?: ReactNativeEasyRouterObject;
 }
 
 export default class App extends React.Component<Props, State> {
@@ -59,21 +63,22 @@ export default class App extends React.Component<Props, State> {
 	}
 
 	public render(): React.ReactNode {
-		return (!this.state.ready) ? null : ( // TODO: null -> preloader
+		const { ready, router } = this.state;
+
+		return (!ready) ? null : ( // TODO: null -> preloader
 			<Provider store={configureStore()}>
 				<Container>
-					<Header style={styles.header}>
-						<Left>
-							<Button transparent>
-								<Icon name="menu" />
-							</Button>
-						</Left>
-						<Body />
-						<Right />
-					</Header>
-					<Content>
-						<BodyPartSelector />
-					</Content>
+					<Header router={router!} />
+					<Router
+						routes={{
+							BodyPartSelector,
+							Counter
+						}}
+						initialRoute="BodyPartSelector"
+						getRouter={(router: ReactNativeEasyRouterObject) => {
+							!this.state.router && this.setState({ router });
+						}}
+					/>
 				</Container>
 			</Provider>
 		);

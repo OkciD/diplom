@@ -21,6 +21,7 @@
     "native-base": "2.12.1",
     "react": "16.8.6",
     "react-native": "0.59.8",
+    "react-native-easy-router": "2.8.0",
     "react-native-sqlite-storage": "3.3.10",
     "react-native-svg": "9.4.0",
     "react-native-swipe-gestures": "1.0.3",

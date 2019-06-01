@@ -66,4 +66,4 @@ function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 	};
 }
 
-export default connect<StoreProps, DispatchProps, any, any>(mapStateToProps, mapDispatchToProps)(AuthForm);
+export default connect<StoreProps, DispatchProps, OwnProps, any>(mapStateToProps, mapDispatchToProps)(AuthForm);
