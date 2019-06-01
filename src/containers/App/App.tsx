@@ -20,6 +20,7 @@ import { BodyPartSelector } from '../BodyPartSelector';
 import Counter from '../Counter';
 import { Header } from '../Header';
 import { Router as ReactNativeEasyRouterObject } from 'react-native-easy-router';
+import { SymptomSearch } from '../SymptomSearch';
 
 interface Props {
 
@@ -73,7 +74,7 @@ export default class App extends React.Component<Props, State> {
 						routes={{
 							BodyPartSelector,
 							Counter,
-							SymptomSearch: Counter
+							SymptomSearch
 						}}
 						initialRoute="BodyPartSelector"
 						getRouter={(router: ReactNativeEasyRouterObject) => {
