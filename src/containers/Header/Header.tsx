@@ -31,7 +31,7 @@ class Header extends React.Component<Props> {
 		}
 
 		// @ts-ignore
-		const { title, renderLeft, renderRight } = headerContents[currentRoute!.route] || {};
+		const { title, renderLeft, renderBody, renderRight } = headerContents[currentRoute!.route] || {};
 
 		return (
 			<NativeBaseHeader style={styles.header}>
@@ -40,6 +40,7 @@ class Header extends React.Component<Props> {
 				</Left>
 				<Body>
 					{title && (<Title>{title}</Title>)}
+					{renderBody && renderBody(state, dispatch, router)}
 				</Body>
 				<Right>
 					{renderRight && renderRight(state, dispatch, router)}

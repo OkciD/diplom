@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Icon } from 'native-base';
+import { Button, Icon, Segment, Text } from 'native-base';
 import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
 import { BodyPartsState, setGenderAction } from '../../modules/bodyParts';
@@ -12,6 +12,7 @@ interface HeaderContents {
 		title: string;
 		back: boolean;
 		renderLeft: RenderFunction;
+		renderBody: RenderFunction;
 		renderRight: RenderFunction;
 	}>;
 }
@@ -21,7 +22,7 @@ const renderBackButton: RenderFunction = (state: StoreState, dispatch: Dispatch,
 		<Icon
 			type="MaterialCommunityIcons"
 			name="arrow-left"
-			onPress={() => router.pop() }
+			onPress={() => router.pop()}
 		/>
 	</Button>
 );
@@ -37,6 +38,18 @@ const headerContents: HeaderContents = {
 				/>
 			</Button>
 		),
+		renderBody: () => {
+			return (
+				<Segment>
+					<Button first>
+						<Text>Поиск</Text>
+					</Button>
+					<Button last active>
+						<Text>Часть тела</Text>
+					</Button>
+				</Segment>
+			);
+		},
 		renderRight: ({ bodyParts }: StoreState, dispatch: Dispatch) => {
 			const oppositeGender: BodyPartsState['gender'] = (bodyParts.gender === 'male') ? 'female' : 'male';
 
