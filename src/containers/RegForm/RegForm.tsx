@@ -45,7 +45,7 @@ class RegForm extends React.Component<Props, State> {
 						/>
 					</Item>
 					<Item floatingLabel>
-						<Label>e-mail</Label>
+						<Label>E-mail</Label>
 						<Input
 							onChangeText={() => {}}
 						/>
