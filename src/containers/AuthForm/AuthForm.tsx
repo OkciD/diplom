@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container, Header, Content, Form, Item, Input, Label, Button, Text } from 'native-base';
+import { Container, Content, Form, Item, Input, Label, Button, Text, Icon } from 'native-base';
 import styles from './AuthForm.styles';
 import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
@@ -21,33 +21,51 @@ interface DispatchProps {
 
 type Props = OwnProps & StoreProps & DispatchProps;
 
+interface State {
+	showPassword: boolean;
+}
+
 class AuthForm extends React.Component<Props> {
+	public state: State = {
+		showPassword: false
+	};
+
+	private readonly onEyeClick = () => {
+		this.setState({
+			showPassword: !this.state.showPassword
+		});
+	};
+
 	public render(): React.ReactNode {
 		const { login, password, setLogin, setPassword } = this.props;
 
 		return (
 			<Container>
-				<Header />
 				<Content>
 					<Form>
 						<Item floatingLabel>
-							<Label>Username</Label>
+							<Label>Имя пользователя</Label>
 							<Input
 								value={login}
 								onChangeText={setLogin}
 							/>
 						</Item>
 						<Item floatingLabel>
-							<Label>Password</Label>
+							<Label>Пароль</Label>
 							<Input
-								secureTextEntry
+								secureTextEntry={!this.state.showPassword}
 								value={password}
 								onChangeText={setPassword}
+							/>
+							<Icon
+								onPress={this.onEyeClick}
+								type="MaterialCommunityIcons"
+								name={this.state.showPassword ? 'eye-off-outline' : 'eye-outline'}
 							/>
 						</Item>
 					</Form>
 					<Button hasText block style={styles.button}>
-						<Text>Submit</Text>
+						<Text>Авторизация</Text>
 					</Button>
 				</Content>
 			</Container>

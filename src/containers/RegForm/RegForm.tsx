@@ -39,7 +39,7 @@ class RegForm extends React.Component<Props, State> {
 			<Content>
 				<Form>
 					<Item floatingLabel>
-						<Label>Имя</Label>
+						<Label>Имя пользователя</Label>
 						<Input
 							onChangeText={() => {}}
 						/>
