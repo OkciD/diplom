@@ -21,6 +21,7 @@ import Counter from '../Counter';
 import { Header } from '../Header';
 import { RegForm } from '../RegForm';
 import { Router as ReactNativeEasyRouterObject } from 'react-native-easy-router';
+import { Survey } from '../Survey';
 
 interface Props {
 
@@ -74,9 +75,12 @@ export default class App extends React.Component<Props, State> {
 						routes={{
 							BodyPartSelector,
 							Counter,
-							RegForm
+							// @ts-ignore
+							RegForm,
+							// @ts-ignore
+							Survey
 						}}
-						initialRoute="RegForm"
+						initialRoute="Survey"
 						getRouter={(router: ReactNativeEasyRouterObject) => {
 							!this.state.router && this.setState({ router });
 						}}
