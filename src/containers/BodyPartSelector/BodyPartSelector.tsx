@@ -34,13 +34,18 @@ class BodyPartSelector extends React.Component<Props> {
 
 	private readonly onSwipe = (gestureName: string) => {
 		const { SWIPE_LEFT, SWIPE_RIGHT } = swipeDirections;
-		const { rotate } = this.props;
+		const { rotate, router } = this.props;
 
 		switch (gestureName) {
-			case SWIPE_LEFT:
+			case SWIPE_LEFT: {
+				console.log('SWIPE_LEFT');
+				router.push.SymptomSearch({}, { type: 'left' });
+				return;
+			}
 			case SWIPE_RIGHT: {
+				console.log('SWIPE_RIGHT');
 				rotate();
-				break;
+				return;
 			}
 			default: {
 				return;
