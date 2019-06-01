@@ -63,17 +63,17 @@ class BodyPartSelector extends React.Component<Props> {
 						position={position}
 						onBodyPartPress={selectBodyPart}
 					/>
+					<View style={styles.rotateButtonContainer}>
+						<RotateButton onPress={rotate}/>
+					</View>
+					{/* TODO: render if at least one symptom is selected */}
+					<Fab position="bottomRight" style={styles.fab} onPress={this.onFabPress}>
+						<Icon
+							type="MaterialCommunityIcons"
+							name="arrow-right"
+						/>
+					</Fab>
 				</GestureRecognizer>
-				<View style={styles.rotateButtonContainer}>
-					<RotateButton onPress={rotate}/>
-				</View>
-				{/*TODO: render if at least one symptom is selected*/}
-				<Fab position="bottomRight" style={styles.fab} onPress={this.onFabPress}>
-					<Icon
-						type="MaterialCommunityIcons"
-						name="arrow-right"
-					/>
-				</Fab>
 			</View>
 		);
 	}
