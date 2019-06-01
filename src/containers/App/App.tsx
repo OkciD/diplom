@@ -74,6 +74,7 @@ export default class App extends React.Component<Props, State> {
 						routes={{
 							BodyPartSelector,
 							Counter,
+							// @ts-ignore
 							SymptomSearch
 						}}
 						initialRoute="BodyPartSelector"
