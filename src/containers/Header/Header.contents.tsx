@@ -42,7 +42,7 @@ const BodyPartSelector = {
 			<Segment>
 				<Button
 					first
-					onPress={() => router.push.SymptomSearch({}, { type: 'right' })}
+					onPress={() => router.push.SymptomSearch({}, { type: 'left' })}
 				>
 					<Text>Поиск</Text>
 				</Button>
@@ -84,7 +84,7 @@ const headerContents: HeaderContents = {
 					</Button>
 					<Button
 						last
-						onPress={() => router.push.BodyPartSelector({}, { type: 'left' })}
+						onPress={() => router.push.BodyPartSelector({}, { type: 'right' })}
 					>
 						<Text>Часть тела</Text>
 					</Button>
