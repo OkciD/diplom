@@ -3,6 +3,7 @@ package com.diplom;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.slider.ReactSliderPackage;
 import com.horcrux.svg.SvgPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new SQLitePluginPackage(),
           new MainReactPackage(),
+            new ReactSliderPackage(),
             new SvgPackage()
       );
     }
