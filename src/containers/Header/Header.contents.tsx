@@ -27,46 +27,70 @@ const renderBackButton: RenderFunction = (state: StoreState, dispatch: Dispatch,
 	</Button>
 );
 
-const headerContents: HeaderContents = {
-	BodyPartSelector: {
-		renderLeft: (state: StoreState, dispatch: Dispatch, router: Router) => (
+const BodyPartSelector = {
+	renderLeft: (state: StoreState, dispatch: Dispatch, router: Router) => (
+		<Button transparent>
+			<Icon
+				type="MaterialCommunityIcons"
+				name="account"
+				onPress={() => router.push.Counter({}, { type: 'top' })}
+			/>
+		</Button>
+	),
+	renderBody: (state: StoreState, dispatch: Dispatch, router: Router) => {
+		return (
+			<Segment>
+				<Button
+					first
+					onPress={() => router.push.SymptomSearch({}, { type: 'right' })}
+				>
+					<Text>Поиск</Text>
+				</Button>
+				<Button last active>
+					<Text>Часть тела</Text>
+				</Button>
+			</Segment>
+		);
+	},
+	renderRight: ({ bodyParts }: StoreState, dispatch: Dispatch) => {
+		const oppositeGender: BodyPartsState['gender'] = (bodyParts.gender === 'male') ? 'female' : 'male';
+
+		return (
 			<Button transparent>
 				<Icon
 					type="MaterialCommunityIcons"
-					name="account"
-					onPress={() => router.push.Counter({}, { type: 'top' })}
+					name={`gender-${oppositeGender}`}
+					onPress={() => dispatch(setGenderAction({ gender: oppositeGender }))}
 				/>
 			</Button>
-		),
-		renderBody: () => {
+		);
+	}
+};
+
+const headerContents: HeaderContents = {
+	BodyPartSelector,
+	Counter: {
+		title: 'Счётчик',
+		renderLeft: renderBackButton
+	},
+	// TODO: параметризовать renderBody у BodyPartSelector и звать его с bind
+	SymptomSearch: {
+		...BodyPartSelector,
+		renderBody: (state: StoreState, dispatch: Dispatch, router: Router) => {
 			return (
 				<Segment>
-					<Button first>
+					<Button first active>
 						<Text>Поиск</Text>
 					</Button>
-					<Button last active>
+					<Button
+						last
+						onPress={() => router.push.BodyPartSelector({}, { type: 'left' })}
+					>
 						<Text>Часть тела</Text>
 					</Button>
 				</Segment>
 			);
-		},
-		renderRight: ({ bodyParts }: StoreState, dispatch: Dispatch) => {
-			const oppositeGender: BodyPartsState['gender'] = (bodyParts.gender === 'male') ? 'female' : 'male';
-
-			return (
-				<Button transparent>
-					<Icon
-						type="MaterialCommunityIcons"
-						name={`gender-${oppositeGender}`}
-						onPress={() => dispatch(setGenderAction({ gender: oppositeGender }))}
-					/>
-				</Button>
-			);
 		}
-	},
-	Counter: {
-		title: 'Счётчик',
-		renderLeft: renderBackButton
 	}
 };
 

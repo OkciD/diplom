@@ -72,7 +72,8 @@ export default class App extends React.Component<Props, State> {
 					<Router
 						routes={{
 							BodyPartSelector,
-							Counter
+							Counter,
+							SymptomSearch: Counter
 						}}
 						initialRoute="BodyPartSelector"
 						getRouter={(router: ReactNativeEasyRouterObject) => {
