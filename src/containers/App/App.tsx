@@ -23,6 +23,7 @@ import { RegForm } from '../RegForm';
 import { Router as ReactNativeEasyRouterObject } from 'react-native-easy-router';
 import { Survey } from '../Survey';
 import { AuthForm } from '../AuthForm';
+import { Account } from '../Account';
 
 interface Props {
 
@@ -81,9 +82,11 @@ export default class App extends React.Component<Props, State> {
 							// @ts-ignore
 							Survey,
 							// @ts-ignore
-							AuthForm
+							AuthForm,
+							// @ts-ignore
+							Account
 						}}
-						initialRoute="AuthForm"
+						initialRoute="Account"
 						getRouter={(router: ReactNativeEasyRouterObject) => {
 							!this.state.router && this.setState({ router });
 						}}

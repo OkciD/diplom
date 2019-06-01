@@ -58,6 +58,10 @@ const headerContents: HeaderContents = {
 	Survey: {
 		title: 'Опрос',
 		renderLeft: renderBackButton
+	},
+	Account: {
+		title: 'Личный кабинет',
+		renderLeft: renderBackButton
 	}
 };
 

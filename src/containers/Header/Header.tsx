@@ -38,7 +38,7 @@ class Header extends React.Component<Props> {
 				<Left>
 					{renderLeft && renderLeft(state, dispatch, router)}
 				</Left>
-				<Body>
+				<Body style={{ flex: 2 }}>
 					{title && (<Title>{title}</Title>)}
 				</Body>
 				<Right>
