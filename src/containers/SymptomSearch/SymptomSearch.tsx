@@ -57,18 +57,20 @@ class SymptomSearch extends React.Component<Props> {
 							name="magnify"
 						/>
 					</Item>
-					{this.selectedSymptoms.map((symptom) => (
-						<Badge primary key={symptom}>
-							<Text>
-								{symptom}
+					<View style={styles.selectedSymptomsContainer}>
+						{this.selectedSymptoms.map((symptom) => (
+							<Badge primary key={symptom} style={styles.selectedSymptomBadge}>
+								<Text style={styles.selectedSymptomBadgeText}>
+									{symptom}
+								</Text>
 								<Icon
-									style={{ fontSize: 18, color: '#FFF', lineHeight: 25 }}
+									style={styles.selectedSymptomBadgeDeleteIcon}
 									type="MaterialCommunityIcons"
 									name="close-circle"
 								/>
-							</Text>
-						</Badge>
-					))}
+							</Badge>
+						))}
+					</View>
 				</View>
 			</GestureRecognizer>
 		);
