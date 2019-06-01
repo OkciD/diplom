@@ -53,7 +53,7 @@ class RegForm extends React.Component<Props, State> {
 					<Item floatingLabel>
 						<Label>Пароль</Label>
 						<Input
-							secureTextEntry
+							secureTextEntry={!this.state.showPassword}
 							onChangeText={() => {}}
 						/>
 						<Icon
