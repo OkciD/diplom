@@ -1,5 +1,8 @@
 # diplom [![Build Status](https://travis-ci.com/figulechka/diplom.svg?branch=master)](https://travis-ci.com/figulechka/diplom)
 
+## Всё свёрстано!
+В ветке [markup](https://github.com/figulechka/diplom/tree/markup) свёрстаны из говна и палок все формы интерфейса, но в мастер это мерджить стыдно.
+
 ## NPM-команды
 * `npm run android` &ndash; запуск бандлера для android;
 * `npm run log:android` &ndash; realtime просмотр логов с android-устройства или эмулятора;
