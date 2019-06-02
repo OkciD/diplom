@@ -28,6 +28,7 @@ import { AuthForm } from '../AuthForm';
 import { Account } from '../Account';
 import { AccountEdit } from '../AccountEdit';
 import { Diagnosis } from '../Diagnosis';
+import { FirstAidManual } from '../FirstAidManual';
 
 interface Props {
 
@@ -96,9 +97,11 @@ export default class App extends React.Component<Props, State> {
 							// @ts-ignore
 							SymptomSearch,
 							BodyPartSymptoms,
-							Diagnosis
+							Diagnosis,
+							// @ts-ignore
+							FirstAidManual
 						}}
-						initialRoute="Diagnosis"
+						initialRoute="FirstAidManual"
 						getRouter={(router: ReactNativeEasyRouterObject) => {
 							!this.state.router && this.setState({ router });
 						}}

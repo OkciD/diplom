@@ -119,6 +119,18 @@ const headerContents: HeaderContents = {
 				/>
 			</Button>
 		)
+	},
+	FirstAidManual: {
+		title: 'Первая помощь',
+		renderRight: (state: StoreState, dispatch: Dispatch, router: Router) => (
+			<Button transparent>
+				<Icon
+					type="MaterialCommunityIcons"
+					name="check"
+					onPress={() => router.push.BodyPartSelector({}, { type: 'left' })}
+				/>
+			</Button>
+		)
 	}
 };
 
