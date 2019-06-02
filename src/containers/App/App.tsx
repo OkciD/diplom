@@ -101,7 +101,7 @@ export default class App extends React.Component<Props, State> {
 							// @ts-ignore
 							FirstAidManual
 						}}
-						initialRoute="FirstAidManual"
+						initialRoute="BodyPartSelector"
 						getRouter={(router: ReactNativeEasyRouterObject) => {
 							!this.state.router && this.setState({ router });
 						}}
