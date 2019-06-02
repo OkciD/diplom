@@ -4,6 +4,7 @@ import styles from './Account.styles';
 import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { RouterProps } from '../Router';
 
 interface OwnProps {
 
@@ -17,7 +18,7 @@ interface DispatchProps {
 
 }
 
-type Props = OwnProps & StoreProps & DispatchProps;
+type Props = OwnProps & StoreProps & DispatchProps & RouterProps;
 
 class Account extends React.Component<Props> {
 
@@ -49,7 +50,11 @@ class Account extends React.Component<Props> {
 					))}
 					<View style={styles.spacer} />
 				</Content>
-				<Fab position="bottomRight" style={styles.fab}>
+				<Fab
+					position="bottomRight"
+					style={styles.fab}
+					onPress={() => this.props.router.push.AccountEdit({}, { type: 'left' })}
+				>
 					<Icon
 						type="MaterialCommunityIcons"
 						name="pencil"

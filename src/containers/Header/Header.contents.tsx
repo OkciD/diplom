@@ -104,6 +104,10 @@ const headerContents: HeaderContents = {
 	Account: {
 		title: 'Личный кабинет',
 		renderLeft: renderBackButton
+	},
+	AccountEdit: {
+		title: 'Личный кабинет',
+		renderLeft: renderBackButton
 	}
 };
 
