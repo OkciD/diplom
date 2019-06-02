@@ -95,6 +95,10 @@ const headerContents: HeaderContents = {
 	Survey: {
 		title: 'Опрос',
 		renderLeft: renderBackButton
+	},
+	BodyPartSymptoms: {
+		title: 'Верхняя часть живота',
+		renderLeft: renderBackButton
 	}
 };
 

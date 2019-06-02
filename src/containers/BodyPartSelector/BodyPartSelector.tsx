@@ -48,7 +48,7 @@ class BodyPartSelector extends React.Component<Props> {
 	};
 
 	private readonly onFabPress = () => {
-		this.props.router.push.Counter({}, { type: 'right' });
+		this.props.router.push.BodyPartSymptoms({}, { type: 'right' });
 	};
 
 	public render(): React.ReactElement | null {

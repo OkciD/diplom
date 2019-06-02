@@ -23,6 +23,7 @@ import { RegForm } from '../RegForm';
 import { Router as ReactNativeEasyRouterObject } from 'react-native-easy-router';
 import { Survey } from '../Survey';
 import { SymptomSearch } from '../SymptomSearch';
+import { BodyPartSymptoms } from '../BodyPartSymptoms';
 
 interface Props {
 
@@ -79,10 +80,12 @@ export default class App extends React.Component<Props, State> {
 							// @ts-ignore
 							RegForm,
 							// @ts-ignore
-							Survey
+							Survey,
+							// @ts-ignore
 							Counter,
 							// @ts-ignore
-							SymptomSearch
+							SymptomSearch,
+							BodyPartSymptoms
 						}}
 						initialRoute="BodyPartSelector"
 						getRouter={(router: ReactNativeEasyRouterObject) => {

@@ -5,6 +5,7 @@ import commonColor from '../../../native-base-theme/variables/commonColor';
 interface SymptomData {
 	name: string;
 	isCritical: boolean;
+	[key: string]: any;
 }
 
 type Props = {
