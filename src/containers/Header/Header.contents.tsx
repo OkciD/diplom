@@ -4,6 +4,7 @@ import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
 import { BodyPartsState, setGenderAction } from '../../modules/bodyParts';
 import { Router } from 'react-native-easy-router';
+import { Account } from '../Account';
 
 type RenderFunction = (state: StoreState, dispatch: Dispatch, router: Router) => React.ReactElement;
 
@@ -33,7 +34,7 @@ const BodyPartSelector = {
 			<Icon
 				type="MaterialCommunityIcons"
 				name="account"
-				onPress={() => router.push.Counter({}, { type: 'top' })}
+				onPress={() => router.push.Account({}, { type: 'top' })}
 			/>
 		</Button>
 	),
@@ -98,6 +99,10 @@ const headerContents: HeaderContents = {
 	},
 	BodyPartSymptoms: {
 		title: 'Верхняя часть живота',
+		renderLeft: renderBackButton
+	},
+	Account: {
+		title: 'Личный кабинет',
 		renderLeft: renderBackButton
 	}
 };

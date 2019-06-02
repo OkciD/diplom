@@ -24,6 +24,9 @@ import { Router as ReactNativeEasyRouterObject } from 'react-native-easy-router'
 import { Survey } from '../Survey';
 import { SymptomSearch } from '../SymptomSearch';
 import { BodyPartSymptoms } from '../BodyPartSymptoms';
+import { AuthForm } from '../AuthForm';
+import { Account } from '../Account';
+import { AccountEdit } from '../AccountEdit';
 
 interface Props {
 
@@ -81,6 +84,12 @@ export default class App extends React.Component<Props, State> {
 							RegForm,
 							// @ts-ignore
 							Survey,
+							// @ts-ignore
+							AuthForm,
+							// @ts-ignore
+							Account,
+							// @ts-ignore
+							AccountEdit,
 							// @ts-ignore
 							Counter,
 							// @ts-ignore
