@@ -24,7 +24,15 @@ interface DispatchProps {
 
 type Props = OwnProps & StoreProps & DispatchProps & RouterProps;
 
-class SymptomSearch extends React.Component<Props> {
+interface State {
+	showSuggestions: boolean;
+}
+
+class SymptomSearch extends React.Component<Props, State> {
+	public state: State = {
+		showSuggestions: false
+	};
+
 	private readonly gestureRecognizerConfig = {
 		velocityThreshold: 0.3,
 		directionalOffsetThreshold: 80
@@ -96,22 +104,33 @@ class SymptomSearch extends React.Component<Props> {
 			<GestureRecognizer config={this.gestureRecognizerConfig} onSwipe={this.onSwipe}>
 				<View style={styles.container}>
 					<Item style={styles.searchBarContainer}>
-						<Input placeholder="Поиск" />
+						<Input
+							placeholder="Поиск"
+							onFocus={() => { this.setState({ showSuggestions: true }); }}
+							// TODO: bug on blur
+							onBlur={() => { this.setState({ showSuggestions: false }); }}
+							{ ...(this.state.showSuggestions) && { value: 'бо' } }
+						/>
 						<Icon
 							type="MaterialCommunityIcons"
 							name="magnify"
 						/>
 					</Item>
-					<SymptomsList
-						symptoms={this.suggestions}
-						renderRightComponent={({ isCritical }) => (
-							<Icon
-								type="MaterialCommunityIcons"
-								name="arrow-right"
-								{...isCritical && { style: { color: commonColor.inputErrorBorderColor } }}
-							/>
-						)}
-					/>
+					{this.state.showSuggestions ? (
+						<SymptomsList
+							symptoms={this.suggestions}
+							renderRightComponent={({ isCritical }) => (
+								<Icon
+									type="MaterialCommunityIcons"
+									name="arrow-right"
+									{...isCritical && { style: { color: commonColor.inputErrorBorderColor } }}
+								/>
+							)}
+						/>
+					) : (
+						this.renderSelectedSymptoms()
+					)}
+
 				</View>
 			</GestureRecognizer>
 		);
