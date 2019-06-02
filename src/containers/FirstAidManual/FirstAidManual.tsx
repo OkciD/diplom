@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { RouterProps } from '../Router';
 import { Content, H2, Text, View, List, ListItem } from 'native-base';
 import styles from './FirstAidManual.styles';
+import { Image } from 'react-native';
 
 interface OwnProps {
 
@@ -26,13 +27,22 @@ class FirstAidManual extends React.Component<Props> {
 			<Content>
 				<View style={styles.container}>
 					<H2 style={styles.diagnosisName}>Перелом руки</H2>
+
 					<Text style={styles.paragraph}>
 						{/* tslint:disable-next-line:max-line-length */}
 						Производится иммобилизация  путем наложения шины, в качестве которой можно использовать любые подручные материалы: доску, лыжную палку, фанеру, толстую ветку.
 					</Text>
+
 					<Text style={styles.paragraph}>
 						Шину фиксируют к руке, обеспечивая ее неподвижность для уменьшения боли и предотвращения смещения.
 					</Text>
+
+					<Image
+						source={{ uri: 'https://s.sakh.com/i/lg/forum/2018/02/05/0c/0ccf2e539f4924fbebea3d0d51d8738266869517.png' }}
+						// @ts-ignore
+						style={{ height: 150, width: null, flex: 1 }}
+					/>
+
 					<Text style={styles.paragraph}>
 						Ни в коем случае нельзя дергать за конечность, пытаясь вправить кости.
 					</Text>
