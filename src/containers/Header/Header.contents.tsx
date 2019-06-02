@@ -4,7 +4,6 @@ import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
 import { BodyPartsState, setGenderAction } from '../../modules/bodyParts';
 import { Router } from 'react-native-easy-router';
-import { Account } from '../Account';
 
 type RenderFunction = (state: StoreState, dispatch: Dispatch, router: Router) => React.ReactElement;
 
@@ -108,6 +107,18 @@ const headerContents: HeaderContents = {
 	AccountEdit: {
 		title: 'Личный кабинет',
 		renderLeft: renderBackButton
+	},
+	Diagnosis: {
+		title: 'Диагноз',
+		renderRight: (state: StoreState, dispatch: Dispatch, router: Router) => (
+			<Button transparent>
+				<Icon
+					type="MaterialCommunityIcons"
+					name="check"
+					onPress={() => router.push.BodyPartSelector({}, { type: 'left' })}
+				/>
+			</Button>
+		)
 	}
 };
 

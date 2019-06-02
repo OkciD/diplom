@@ -27,6 +27,7 @@ import { BodyPartSymptoms } from '../BodyPartSymptoms';
 import { AuthForm } from '../AuthForm';
 import { Account } from '../Account';
 import { AccountEdit } from '../AccountEdit';
+import { Diagnosis } from '../Diagnosis';
 
 interface Props {
 
@@ -94,9 +95,10 @@ export default class App extends React.Component<Props, State> {
 							Counter,
 							// @ts-ignore
 							SymptomSearch,
-							BodyPartSymptoms
+							BodyPartSymptoms,
+							Diagnosis
 						}}
-						initialRoute="BodyPartSelector"
+						initialRoute="Diagnosis"
 						getRouter={(router: ReactNativeEasyRouterObject) => {
 							!this.state.router && this.setState({ router });
 						}}
