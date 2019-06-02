@@ -91,6 +91,10 @@ const headerContents: HeaderContents = {
 				</Segment>
 			);
 		}
+	},
+	Survey: {
+		title: 'Опрос',
+		renderLeft: renderBackButton
 	}
 };
 
