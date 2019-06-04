@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Content, Form, Item, Input, Label, Button, Text, Icon } from 'native-base';
+import { Content, Form, Item, Input, Label, Button, Text, Icon, View } from 'native-base';
 import styles from './RegForm.styles';
 import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import commonColor from '../../../native-base-theme/variables/commonColor';
 
 interface OwnProps {
 
@@ -66,6 +67,10 @@ class RegForm extends React.Component<Props, State> {
 				<Button hasText block style={styles.button}>
 					<Text>Зарегистрироваться</Text>
 				</Button>
+				<View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+					<Text style={{ color: commonColor.brandInfo, marginBottom: 10, marginTop: 15 }}>Авторизация</Text>
+					<Text style={{ color: commonColor.brandInfo }}>Продолжить без регистрации</Text>
+				</View>
 			</Content>
 		);
 	}

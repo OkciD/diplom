@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { Container, Content, Form, Item, Input, Label, Button, Text, Icon } from 'native-base';
+import { Container, Content, Form, Item, Input, Label, Button, Text, Icon, View } from 'native-base';
 import styles from './AuthForm.styles';
 import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { setFieldAction, AuthState } from '../../modules/auth';
+// @ts-ignore
+import Hyperlink from 'react-native-hyperlink';
+import commonColor from '../../../native-base-theme/variables/commonColor';
 
 interface OwnProps {
 
@@ -67,6 +70,10 @@ class AuthForm extends React.Component<Props> {
 					<Button hasText block style={styles.button}>
 						<Text>Авторизация</Text>
 					</Button>
+					<View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+						<Text style={{ color: commonColor.brandInfo, marginBottom: 10, marginTop: 15 }}>Регистрация</Text>
+						<Text style={{ color: commonColor.brandInfo }}>Продолжить без авторизации</Text>
+					</View>
 				</Content>
 			</Container>
 		);
