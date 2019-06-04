@@ -102,7 +102,16 @@ const headerContents: HeaderContents = {
 	},
 	Account: {
 		title: 'Личный кабинет',
-		renderLeft: renderBackButton
+		renderLeft: renderBackButton,
+		renderRight: () => (
+			<Button transparent>
+				<Icon
+					type="MaterialCommunityIcons"
+					name="logout"
+					onPress={() => {}}
+				/>
+			</Button>
+		)
 	},
 	AccountEdit: {
 		title: 'Личный кабинет',
