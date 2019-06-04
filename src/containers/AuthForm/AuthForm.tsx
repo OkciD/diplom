@@ -5,8 +5,6 @@ import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { setFieldAction, AuthState } from '../../modules/auth';
-// @ts-ignore
-import Hyperlink from 'react-native-hyperlink';
 import commonColor from '../../../native-base-theme/variables/commonColor';
 
 interface OwnProps {
