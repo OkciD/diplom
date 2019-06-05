@@ -36,25 +36,38 @@ class RegForm extends React.Component<Props, State> {
 	};
 
 	public render(): React.ReactNode {
+		const nameHasError: boolean = true;
+		const emailHasError: boolean = true;
+		const passwordHasError: boolean = true;
+
 		return (
 			<Content>
 				<Form>
-					<Item floatingLabel>
+					<Item floatingLabel error={nameHasError}>
 						<Label>Имя пользователя</Label>
 						<Input
+							style={nameHasError ? styles.errorInput : {}}
 							onChangeText={() => {}}
 						/>
 					</Item>
-					<Item floatingLabel>
+					{nameHasError && (<Text style={styles.errorText}>
+						Поле обязательно для заполнения
+					</Text>)}
+					<Item floatingLabel error={emailHasError}>
 						<Label>E-mail</Label>
 						<Input
+							style={emailHasError ? styles.errorInput : {}}
 							onChangeText={() => {}}
 						/>
 					</Item>
-					<Item floatingLabel>
+					{emailHasError && (<Text style={styles.errorText}>
+						Поле обязательно для заполнения
+					</Text>)}
+					<Item floatingLabel error={passwordHasError}>
 						<Label>Пароль</Label>
 						<Input
 							secureTextEntry={!this.state.showPassword}
+							style={passwordHasError ? styles.errorInput : {}}
 							onChangeText={() => {}}
 						/>
 						<Icon
@@ -63,6 +76,9 @@ class RegForm extends React.Component<Props, State> {
 							name={this.state.showPassword ? 'eye-off-outline' : 'eye-outline'}
 						/>
 					</Item>
+					{passwordHasError && (<Text style={styles.errorText}>
+						Поле обязательно для заполнения
+					</Text>)}
 				</Form>
 				<Button hasText block style={styles.button}>
 					<Text>Зарегистрироваться</Text>
