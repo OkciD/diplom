@@ -39,24 +39,31 @@ class AuthForm extends React.Component<Props> {
 
 	public render(): React.ReactNode {
 		const { login, password, setLogin, setPassword } = this.props;
+		const loginHasError: boolean = false;
+		const passwordHasError: boolean = false;
 
 		return (
 			<Container>
 				<Content>
 					<Form>
-						<Item floatingLabel>
+						<Item floatingLabel error={loginHasError}>
 							<Label>Имя пользователя</Label>
 							<Input
 								value={login}
 								onChangeText={setLogin}
+								style={loginHasError ? styles.errorInput : {}}
 							/>
 						</Item>
-						<Item floatingLabel>
+						{loginHasError && (<Text style={styles.errorText}>
+							Данный аккаунт не зарегистрирован
+						</Text>)}
+						<Item floatingLabel error={passwordHasError}>
 							<Label>Пароль</Label>
 							<Input
 								secureTextEntry={!this.state.showPassword}
 								value={password}
 								onChangeText={setPassword}
+								style={passwordHasError ? styles.errorInput : {}}
 							/>
 							<Icon
 								onPress={this.onEyeClick}
@@ -64,6 +71,9 @@ class AuthForm extends React.Component<Props> {
 								name={this.state.showPassword ? 'eye-off-outline' : 'eye-outline'}
 							/>
 						</Item>
+						{passwordHasError && (<Text style={styles.errorText}>
+							Неверный пароль
+						</Text>)}
 					</Form>
 					<Button hasText block style={styles.button}>
 						<Text>Авторизация</Text>
