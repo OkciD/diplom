@@ -1,1 +1,1 @@
-export const DB_NAME: string = 'counter-db.sqlite3';
+export const DB_NAME: string = 'db.sqlite3';

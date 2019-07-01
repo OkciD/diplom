@@ -6,15 +6,15 @@ then
 
     if [[ ! -d "$assets_dir_path" ]]
     then
-        mkdir "$assets_dir_path"
+        mkdir -p "$assets_dir_path"
     fi
 
-    cp -r ./www/ "$assets_dir_path/www"
+    cp -r ./assets/ "$assets_dir_path/www"
 
     exit 0;
 elif [[ "$1" = "ios" ]]
 then
-    echo "No db placement script written for IOS build"
+    echo "No db placement script for IOS build"
     exit 1;
 elif [[ -z "$1" ]]
 then
