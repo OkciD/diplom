@@ -1,22 +1,22 @@
 enum MaleFrontBodyParts {
 	Head = 1,
 	Eyes = 2,
-	Ears = 3,
-	Nose = 4,
-	OralCavity = 5,
+	Nose = 3,
+	OralCavity = 4,
+	Ears = 5,
 	NeckOrThroat = 6,
-	Chest = 7,
-	UpperArm = 8,
-	UpperAbdomen = 9,
-	Forearm = 10,
+	Chest = 8,
+	UpperAbdomen = 10,
 	MidAbdomen = 11,
 	LowerAbdomen = 12,
-	Hand = 13,
-	SexualOrgans = 14,
-	Thigh = 15,
-	Knee = 16,
-	LowerLeg = 17,
-	Foot = 18
+	UpperArm = 13,
+	Forearm = 14,
+	Hand = 15,
+	Thigh = 21,
+	Knee = 22,
+	LowerLeg = 23,
+	Foot = 24,
+	SexualOrgans = 25
 }
 
 /* tslint:disable:max-line-length */
