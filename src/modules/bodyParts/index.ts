@@ -1,4 +1,4 @@
-export { default as BodyPartsState, SelectBodyPartPayload, SetGenderPayload } from './bodyParts.types.d';
+export { default as BodyPartsState, ChooseBodyPartPayload, SetGenderPayload } from './bodyParts.types.d';
 export { ActionTypes, initialState, MaleFrontBodyParts, MaleBackBodyParts } from './bodyParts.constants';
 export {
 	setGenderAction,

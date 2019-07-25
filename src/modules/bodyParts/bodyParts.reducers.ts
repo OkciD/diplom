@@ -1,4 +1,4 @@
-import { ActionTypes, initialState, BodyPartsState, SetGenderPayload, SelectBodyPartPayload } from './';
+import { ActionTypes, initialState, BodyPartsState, SetGenderPayload, ChooseBodyPartPayload } from './';
 import { Action, handleActions } from 'redux-actions';
 
 function setGenderReducer(state: BodyPartsState, action: Action<SetGenderPayload>): BodyPartsState {
@@ -15,23 +15,15 @@ function switchPositionReducer(state: BodyPartsState): BodyPartsState {
 	};
 }
 
-function selectBodyPartReducer(state: BodyPartsState, action: Action<SelectBodyPartPayload>): BodyPartsState {
+function chooseBodyPartReducer(state: BodyPartsState, action: Action<ChooseBodyPartPayload>): BodyPartsState {
 	return {
 		...state,
-		selectedBodyPartId: action.payload!.bodyPartId
-	};
-}
-
-function unselectBodyPartReducer(state: BodyPartsState): BodyPartsState {
-	return {
-		...state,
-		selectedBodyPartId: null
+		chosenBodyPartId: action.payload!.bodyPartId
 	};
 }
 
 export default handleActions<BodyPartsState, any>({
 	[ActionTypes.SetGender]: setGenderReducer,
 	[ActionTypes.SwitchPosition]: switchPositionReducer,
-	[ActionTypes.SelectBodyPart]: selectBodyPartReducer,
-	[ActionTypes.UnSelectBodyPart]: unselectBodyPartReducer
+	[ActionTypes.ChooseBodyPart]: chooseBodyPartReducer
 }, initialState);

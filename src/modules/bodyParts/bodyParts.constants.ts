@@ -41,7 +41,7 @@ export enum MaleBackBodyParts {
 }
 
 export const initialState: BodyPartsState = {
-	selectedBodyPartId: null,
+	chosenBodyPartId: null,
 	gender: 'male',
 	position: 'front'
 };
@@ -49,6 +49,5 @@ export const initialState: BodyPartsState = {
 export enum ActionTypes {
 	SetGender = 'BODY_PARTS/SET_GENDER',
 	SwitchPosition = 'BODY_PARTS/SWITCH_POSITION',
-	SelectBodyPart = 'BODY_PARTS/SELECT_BODY_PART',
-	UnSelectBodyPart = 'BODY_PARTS/UNSELECT_BODY_PART'
+	ChooseBodyPart = 'BODY_PARTS/CHOOSE_BODY_PART'
 }
