@@ -3,7 +3,6 @@ export { ActionTypes, initialState, MaleFrontBodyParts, MaleBackBodyParts } from
 export {
 	setGenderAction,
 	switchPositionAction,
-	selectBodyPartAction,
-	unSelectBodyPartAction
+	selectBodyPartAction
 } from './bodyParts.actions';
 export { default as bodyPartsReducer } from './bodyParts.reducers';
