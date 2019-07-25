@@ -17,7 +17,6 @@ import { Alert, BackHandler } from 'react-native';
 import { Container } from 'native-base';
 import { Router } from '../Router';
 import { BodyPartSelector } from '../BodyPartSelector';
-import Counter from '../Counter';
 import { Header } from '../Header';
 import { Router as ReactNativeEasyRouterObject } from 'react-native-easy-router';
 
@@ -71,8 +70,7 @@ export default class App extends React.Component<Props, State> {
 					<Header router={router!} />
 					<Router
 						routes={{
-							BodyPartSelector,
-							Counter
+							BodyPartSelector
 						}}
 						initialRoute="BodyPartSelector"
 						getRouter={(router: ReactNativeEasyRouterObject) => {
