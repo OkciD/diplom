@@ -34,7 +34,8 @@
     "max-line-length": [true, 120],
     "no-increment-decrement": false,
     "semicolon": [true, "always", "strict-bound-class-methods"],
-    "variable-name": [true, "allow-pascal-case"]
+    "variable-name": [true, "allow-pascal-case"],
+    "ter-arrow-parens": [true, "always"]
   },
   "linterOptions": {
     "exclude": [

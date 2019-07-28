@@ -6,3 +6,4 @@ export {
 	selectBodyPartAction
 } from './bodyParts.actions';
 export { default as bodyPartsReducer } from './bodyParts.reducers';
+export { getCommonBodyPartId } from './bodyparts.db.actions';
