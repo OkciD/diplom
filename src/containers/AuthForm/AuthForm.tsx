@@ -5,6 +5,7 @@ import { StoreState } from '../../modules/index';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { setFieldAction, AuthState } from '../../modules/auth';
+import { RouterProps } from '../Router';
 
 interface OwnProps {
 
@@ -19,7 +20,7 @@ interface DispatchProps {
 	setPassword: (password: string) => void;
 }
 
-type Props = OwnProps & StoreProps & DispatchProps;
+type Props = OwnProps & StoreProps & DispatchProps & RouterProps;
 
 class AuthForm extends React.Component<Props> {
 	public render(): React.ReactNode {
