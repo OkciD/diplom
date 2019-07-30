@@ -25,7 +25,12 @@ WHERE
 	})));
 }
 
-// TODO: comment
+/**
+ * Возвращает симптомы для переданной части тела, а так же, если у неё есть "общая" часть тела, приклеивает к списку
+ * сипмтомы и для неё
+ * @param {number} bodyPartId - id части тела
+ * @return {Promise<Symptom[]>}
+ */
 export async function getSymptomsForBodyPart(bodyPartId: number): Promise<Symptom[]> {
 	const symptomsForConcreteBodyPart: Symptom[] = await getSymptomsByBodyPartId(bodyPartId);
 	const commonBodyPartId: number | null = await getCommonBodyPartId(bodyPartId);

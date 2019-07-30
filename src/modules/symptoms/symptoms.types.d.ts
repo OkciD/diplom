@@ -14,3 +14,7 @@ export interface Symptom {
 export interface LoadSymptomsPayload {
 	chosenBodyPartId: number;
 }
+
+export interface SetSymptomsPayload {
+	symptoms: Symptom[];
+}
