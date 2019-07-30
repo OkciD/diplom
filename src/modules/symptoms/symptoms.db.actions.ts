@@ -1,12 +1,11 @@
 import { executeSql } from '../db';
 import { Symptom } from './';
-import { getCommonBodyPartId } from '../bodyParts';
 
 type RawSymptom = Symptom & {
 	isCritical: 1 | null;
 };
 
-function getSymptomsByBodyPartId(bodyPartId: number): Promise<Symptom[]> {
+export function getSymptomsByBodyPartId(bodyPartId: number): Promise<Symptom[]> {
 	return executeSql<RawSymptom>(`
 SELECT
 	symptom.id,
@@ -23,26 +22,4 @@ WHERE
 		...rawSymptom,
 		isCritical: Boolean(rawSymptom.isCritical)
 	})));
-}
-
-/**
- * Возвращает симптомы для переданной части тела, а так же, если у неё есть "общая" часть тела, приклеивает к списку
- * сипмтомы и для неё
- * @param {number} bodyPartId - id части тела
- * @return {Promise<Symptom[]>}
- */
-export async function getSymptomsForBodyPart(bodyPartId: number): Promise<Symptom[]> {
-	const symptomsForConcreteBodyPart: Symptom[] = await getSymptomsByBodyPartId(bodyPartId);
-	const commonBodyPartId: number | null = await getCommonBodyPartId(bodyPartId);
-
-	if (!commonBodyPartId) {
-		return symptomsForConcreteBodyPart;
-	}
-
-	const symptomsForCommonBodyPart: Symptom[] = await getSymptomsByBodyPartId(commonBodyPartId);
-
-	return [
-		...symptomsForConcreteBodyPart,
-		...symptomsForCommonBodyPart
-	];
 }
