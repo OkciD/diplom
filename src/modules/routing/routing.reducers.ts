@@ -1,7 +1,7 @@
 import { Action, handleActions } from 'redux-actions';
-import { ActionTypes, initialState, RoutingState, SetStackPayload } from './';
+import { ActionTypes, initialState, RoutingState, RoutePayload } from './';
 
-function setStackReducer(state: RoutingState, action: Action<SetStackPayload>): RoutingState {
+function routeReducer(state: RoutingState, action: Action<RoutePayload>): RoutingState {
 	const { stack } = action.payload!;
 
 	return {
@@ -11,5 +11,5 @@ function setStackReducer(state: RoutingState, action: Action<SetStackPayload>): 
 }
 
 export default handleActions({
-	[ActionTypes.SetStack]: setStackReducer
+	[ActionTypes.Route]: routeReducer
 }, initialState);

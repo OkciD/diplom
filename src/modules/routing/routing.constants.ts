@@ -6,5 +6,5 @@ export const initialState: RoutingState = {
 };
 
 export enum ActionTypes {
-	SetStack = 'ROUTING/SET_STACK'
+	Route = 'ROUTING/ROUTE'
 }

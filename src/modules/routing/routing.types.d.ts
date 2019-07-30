@@ -5,6 +5,6 @@ export default interface RoutingState {
 	currentRoute: Route | null;
 }
 
-export interface SetStackPayload {
+export interface RoutePayload {
 	stack: RouterStack;
 }

@@ -1,4 +1,4 @@
 import { createAction } from 'redux-actions';
-import { ActionTypes, SetStackPayload } from './';
+import { ActionTypes, RoutePayload } from './';
 
-export const setStackAction = createAction<SetStackPayload>(ActionTypes.SetStack);
+export const routeAction = createAction<RoutePayload>(ActionTypes.Route);

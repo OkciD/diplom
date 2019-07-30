@@ -8,7 +8,7 @@ import {
 import { connect, ConnectedComponentClass } from 'react-redux';
 import { RouterProps } from './';
 import { Dispatch } from 'redux';
-import { setStackAction } from '../../modules/routing';
+import { routeAction } from '../../modules/routing';
 
 interface RoutingElementParams {
 	router: ReactNativeEasyRouterObject;
@@ -28,7 +28,7 @@ interface StoreProps {
 }
 
 interface DispatchProps {
-	setStack: (stack: RouterStack) => void;
+	route: (stack: RouterStack) => void;
 }
 
 type Props = OwnProps & StoreProps & DispatchProps;
@@ -52,13 +52,13 @@ class Router extends React.Component<Props> {
 	}
 
 	public render(): React.ReactNode {
-		const { initialRoute, setStack, getRouter } = this.props;
+		const { initialRoute, route, getRouter } = this.props;
 
 		return (
 			<ReactNativeEasyRouter
 				routes={this.createRoutes()}
-				initialRoute={initialRoute}
-				onStackChange={setStack}
+				initialRoute={initialRoute} // TODO: to redux
+				onStackChange={route}
 				router={getRouter}
 			/>
 		);
@@ -71,7 +71,7 @@ function mapStateToProps(): StoreProps {
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 	return {
-		setStack: (stack: RouterStack) => dispatch(setStackAction({ stack }))
+		route: (stack: RouterStack) => dispatch(routeAction({ stack }))
 	};
 }
 
