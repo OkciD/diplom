@@ -1,6 +1,6 @@
-// import { counterRootSaga } from '../counter';
+import { symptomsSaga } from '../symptoms';
 import { fork } from 'redux-saga/effects';
 
 export default function * (): any {
-	// yield fork(counterRootSaga);
+	yield fork(symptomsSaga);
 }
