@@ -6,6 +6,5 @@ export const initialState: SymptomsState = {
 };
 
 export enum ActionTypes {
-	LoadSymptoms = 'SYMPTOMS/LOAD_SYMPTOMS',
 	SetSymptoms = 'SYMPTOMS/SET_SYMPTOMS'
 }

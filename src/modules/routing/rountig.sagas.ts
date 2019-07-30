@@ -1,16 +1,25 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
-import { Action } from 'redux-actions';
-import { RoutePayload, ActionTypes } from './';
+import { ActionTypes } from './';
 import { StoreState } from '../index';
+import { selectBodyPartAction } from '../bodyParts';
+import { loadSymptomsSaga } from '../symptoms';
 
-function * routeSaga(action: Action<RoutePayload>): any {
-	const { currentRoute } = yield select<SelectFn<StoreState>>(({ routing }: StoreState) => ({
-		currentRoute: routing.currentRoute
-	}));
+function * routeSaga(): any {
+	const { route, params } = yield select<SelectFn<StoreState>>(({ routing }: StoreState) => routing.currentRoute);
 
-	console.log('#'.repeat(10));
-	console.log(currentRoute);
-	console.log('#'.repeat(10));
+	switch (route) {
+		case 'SymptomsSelector':
+			yield call(initSymptomsSelector, params);
+			return;
+	}
+}
+
+// TODO: refactor
+function * initSymptomsSelector(params: { chosenBodyPartId: number }): any {
+	const { chosenBodyPartId } = params;
+
+	yield put(selectBodyPartAction({ bodyPartId: params.chosenBodyPartId }));
+	yield call(loadSymptomsSaga, chosenBodyPartId);
 }
 
 export default function * routingRootSaga(): any {

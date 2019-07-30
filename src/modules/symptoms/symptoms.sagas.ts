@@ -1,14 +1,12 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
-import { Action } from 'redux-actions';
-import { ActionTypes, getSymptomsByBodyPartId, LoadSymptomsPayload, setSymptomsAction, Symptom } from './';
+import { call, put } from 'redux-saga/effects';
+import { getSymptomsByBodyPartId, setSymptomsAction, Symptom } from './';
 import { getCommonBodyPartId } from '../bodyParts';
 
 /**
  * Кладёт в стейт симптомы для переданной части тела, а так же, если у неё есть "общая" часть тела,
  * приклеивает к списку сипмтомы и для неё
  */
-function * loadSymptomsSaga(action: Action<LoadSymptomsPayload>): any {
-	const { chosenBodyPartId } = action.payload!;
+export function * loadSymptomsSaga(chosenBodyPartId: number): any {
 	const symptomsForConcreteBodyPart: Symptom[] = yield call(getSymptomsByBodyPartId, chosenBodyPartId);
 	const commonBodyPartId: number | null = yield call(getCommonBodyPartId, chosenBodyPartId);
 
@@ -25,8 +23,4 @@ function * loadSymptomsSaga(action: Action<LoadSymptomsPayload>): any {
 			...symptomsForCommonBodyPart
 		]
 	}));
-}
-
-export default function * symptomsRootSaga(): any {
-	yield takeLatest(ActionTypes.LoadSymptoms, loadSymptomsSaga);
 }

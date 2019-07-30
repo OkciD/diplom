@@ -11,10 +11,6 @@ export interface Symptom {
 	isCritical: boolean;
 }
 
-export interface LoadSymptomsPayload {
-	chosenBodyPartId: number;
-}
-
 export interface SetSymptomsPayload {
 	symptoms: Symptom[];
 }

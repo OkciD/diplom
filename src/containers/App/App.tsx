@@ -19,6 +19,7 @@ import { Router } from '../Router';
 import { BodyPartSelector } from '../BodyPartSelector';
 import { Header } from '../Header';
 import { Router as ReactNativeEasyRouterObject } from 'react-native-easy-router';
+import { AuthForm } from '../AuthForm';
 
 interface Props {
 
@@ -70,7 +71,9 @@ export default class App extends React.Component<Props, State> {
 					<Header router={router!} />
 					<Router
 						routes={{
-							BodyPartSelector
+							BodyPartSelector,
+							AuthForm,
+							SymptomsSelector: AuthForm
 						}}
 						initialRoute="BodyPartSelector"
 						getRouter={(router: ReactNativeEasyRouterObject) => {

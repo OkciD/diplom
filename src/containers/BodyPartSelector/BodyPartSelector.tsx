@@ -10,7 +10,6 @@ import { RotateButton } from '../../components/RotateButton';
 // @ts-ignore
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 import { RouterProps } from '../Router';
-import { loadSymptomsAction } from '../../modules/symptoms';
 
 interface OwnProps {
 
@@ -21,7 +20,6 @@ interface StoreProps extends BodyPartsState {
 }
 
 interface DispatchProps {
-	selectBodyPart: (bodyPartId: number) => void;
 	rotate: () => void;
 }
 
@@ -50,11 +48,16 @@ class BodyPartSelector extends React.Component<Props> {
 	};
 
 	private readonly onFabPress = () => {
-		this.props.router.push.Counter({}, { type: 'right' });
+		// TODO: temporary
+		this.props.router.push.AuthForm({}, { type: 'right' });
+	};
+
+	private readonly onBodyPartPress = (chosenBodyPartId: number) => {
+		this.props.router.push.SymptomsSelector({ chosenBodyPartId }, { type: 'right' });
 	};
 
 	public render(): React.ReactElement | null {
-		const { gender, position, selectBodyPart, rotate } = this.props;
+		const { gender, position, rotate } = this.props;
 
 		return (
 			<View style={styles.container}>
@@ -62,7 +65,7 @@ class BodyPartSelector extends React.Component<Props> {
 					<HumanBody
 						gender={gender}
 						position={position}
-						onBodyPartPress={selectBodyPart}
+						onBodyPartPress={this.onBodyPartPress}
 					/>
 				</GestureRecognizer>
 				<View style={styles.rotateButtonContainer}>
@@ -86,7 +89,6 @@ function mapStateToProps(state: StoreState): StoreProps {
 
 function mapDispatchToProps(dispatch: Dispatch): DispatchProps {
 	return {
-		selectBodyPart: (chosenBodyPartId: number) => dispatch(loadSymptomsAction({ chosenBodyPartId })),
 		rotate: () => dispatch(switchPositionAction())
 	};
 }
