@@ -1,4 +1,4 @@
-export { default as SymptomsState, Symptom, LoadSymptomsPayload, SetSymptomsPayload } from './symptoms.types';
+export { default as SymptomsState, Symptom, LoadSymptomsPayload, SetSymptomsPayload } from './symptoms.types.d';
 export { initialState, ActionTypes } from './symptoms.constants';
 export { loadSymptomsAction, setSymptomsAction } from './symptoms.actions';
 export { getSymptomsByBodyPartId } from './symptoms.db.actions';

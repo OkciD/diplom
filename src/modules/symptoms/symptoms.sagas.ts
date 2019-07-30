@@ -13,7 +13,8 @@ function * loadSymptomsSaga(action: Action<LoadSymptomsPayload>): any {
 	const commonBodyPartId: number | null = yield call(getCommonBodyPartId, chosenBodyPartId);
 
 	if (!commonBodyPartId) {
-		return put(setSymptomsAction({ symptoms: symptomsForConcreteBodyPart }));
+		yield put(setSymptomsAction({ symptoms: symptomsForConcreteBodyPart }));
+		return;
 	}
 
 	const symptomsForCommonBodyPart: Symptom[] = yield call(getSymptomsByBodyPartId, commonBodyPartId);
