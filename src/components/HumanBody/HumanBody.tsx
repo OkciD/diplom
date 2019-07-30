@@ -7,7 +7,7 @@ type Props = Partial<{
 	width: number | string;
 	height: number | string;
 	onBodyPartPress: (bodyPartId: number) => void;
-	selectedBodyPartId: number | null;
+	selectedBodyPartsIds?: number[];
 	gender: 'male' | 'female';
 	position: 'front' | 'back';
 }>;
@@ -23,7 +23,7 @@ export default function HumanBody(props: Props): React.ReactElement {
 		width = 1.65 * 168,
 		height = 1.65 * 320,
 		onBodyPartPress = () => {},
-		selectedBodyPartId = null,
+		selectedBodyPartsIds = [],
 		gender = 'male',
 		position = 'front'
 	} = props;
@@ -65,7 +65,7 @@ export default function HumanBody(props: Props): React.ReactElement {
 			</G>
 			<G fill="none">
 				{paths.bodyPartsPaths.map(([bodyPartId, path]) => {
-					const isSelected: boolean = (selectedBodyPartId === bodyPartId);
+					const isSelected: boolean = selectedBodyPartsIds.includes(bodyPartId);
 
 					return (
 						<Path
