@@ -6,10 +6,11 @@ import { BodyPartsState, setGenderAction } from '../../modules/bodyParts';
 import { Router } from 'react-native-easy-router';
 
 type RenderFunction = (state: StoreState, dispatch: Dispatch, router: Router) => React.ReactElement;
+type GetFromStateFunction<T> = (state: StoreState) => T;
 
 interface HeaderContents {
 	[route: string]: Partial<{
-		title: string;
+		getTitle: GetFromStateFunction<string>;
 		back: boolean;
 		renderLeft: RenderFunction;
 		renderRight: RenderFunction;
@@ -52,7 +53,7 @@ const headerContents: HeaderContents = {
 		}
 	},
 	SymptomsSelector: {
-		title: 'Выбор симптомов', // TODO: название выбранной части тела
+		getTitle: (state: StoreState) => state.bodyParts.chosenBodyPart.name || '',
 		renderLeft: renderBackButton
 	}
 };
