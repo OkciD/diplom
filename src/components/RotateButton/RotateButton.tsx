@@ -7,7 +7,6 @@ type Props = Partial<{
 	onPress: () => void
 }>;
 
-// tslint:disable:function-name
 // tslint:disable:max-line-length
 export default function RotateButton(props: Props): React.ReactElement {
 	const {

@@ -17,7 +17,6 @@ interface Paths {
 	bodyPartsPaths: [number, string][];
 }
 
-// tslint:disable-next-line:function-name
 export default function HumanBody(props: Props): React.ReactElement {
 	const {
 		width = 1.65 * 168,

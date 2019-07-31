@@ -35,7 +35,8 @@
     "no-increment-decrement": false,
     "semicolon": [true, "always", "strict-bound-class-methods"],
     "variable-name": [true, "allow-pascal-case"],
-    "ter-arrow-parens": [true, "always"]
+    "ter-arrow-parens": [true, "always"],
+    "function-name": false
   },
   "linterOptions": {
     "exclude": [
