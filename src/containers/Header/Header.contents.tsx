@@ -51,8 +51,8 @@ const headerContents: HeaderContents = {
 			);
 		}
 	},
-	Counter: {
-		title: 'Счётчик',
+	SymptomsSelector: {
+		title: 'Выбор симптомов', // TODO: название выбранной части тела
 		renderLeft: renderBackButton
 	}
 };
