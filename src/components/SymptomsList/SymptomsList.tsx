@@ -1,5 +1,5 @@
 import React from 'react';
-import { Body, Content, List, ListItem, Right, Text } from 'native-base';
+import { Body, Content, List, ListItem, Right, Text, View } from 'native-base';
 import commonColor from '../../../native-base-theme/variables/commonColor';
 
 interface SymptomData {
@@ -10,13 +10,15 @@ interface SymptomData {
 
 type Props = {
 	symptoms: SymptomData[],
-	renderRightComponent?: (symptom: SymptomData) => any
+	renderRightComponent?: (symptom: SymptomData) => any,
+	withSpacing: boolean
 };
 
 export default function SymptomsList(props: Props): React.ReactElement {
 	const {
 		symptoms,
-		renderRightComponent
+		renderRightComponent,
+		withSpacing = true
 	} = props;
 
 	return (
@@ -40,6 +42,9 @@ export default function SymptomsList(props: Props): React.ReactElement {
 						</ListItem>
 					);
 				})}
+				{withSpacing && (
+					<View style={{ height: 90 }} />
+				)}
 			</List>
 		</Content>
 	);
